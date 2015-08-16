@@ -1,0 +1,27 @@
+{
+  "name": "baseball-pbp",
+  "version": "0.0.1",
+  "description": "Temp server for baseball play-by-play app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "watch": "watchify app.js -o public/dist/app-dist.js -dv"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "erd"
+  ],
+  "author": "Jacob Dalton",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~3.4.7",
+    "monk": "~0.9.1",
+    "body-parser": "~1.12.4",
+    "lodash": "~3.10.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2"
+  }
+}
