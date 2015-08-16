@@ -9,7 +9,20 @@
   </head>
   <body>
     <div id="game" ng-controller="GameCtrl as game">
-      Smoke: {{ "O" + "K" }}
+      <div>Outs: {{ game.state.outs }}</div>
+      <div>Inning: {{ game.state.inning }}</div>
+      <div>Pitcher: {{ game.state.pitcher.name }}</div>
+      <div>Batter: {{ game.state.batter.name }}</div>
+
+      <h3>Team 1</h3>
+      <ul ng-repeat="player in game.rosterTeam1">
+        <li>Name: {{player.name}}</li>
+      </ul>
+
+      <h3>Team 2</h3>
+      <ul ng-repeat="player in game.rosterTeam2">
+        <li>Name: {{player.name}}</li>
+      </ul>
     </div>
 
     <!-- Vendor -->
