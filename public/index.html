@@ -13,16 +13,16 @@
       <div>Inning: {{ game.state.inning }}</div>
       <div>Pitcher: {{ game.state.pitcher.name }}</div>
       <div>Batter: {{ game.state.batter.name }}</div>
+      <div>1st Base: {{ game.state.base1.name }}</div>
+      <div>2nd Base: {{ game.state.base2.name }}</div>
+      <div>3rd Base: {{ game.state.base3.name }}</div>
 
-      <h3>Team 1</h3>
-      <ul ng-repeat="player in game.rosterTeam1">
-        <li>Name: {{player.name}}</li>
+      <ul id="play-action-buttons">
+        <li ng-repeat="action in game.playActions">
+          <button ng-click="createPlayAction(action)">{{action.abbrev}}</button>
+        </li>
       </ul>
 
-      <h3>Team 2</h3>
-      <ul ng-repeat="player in game.rosterTeam2">
-        <li>Name: {{player.name}}</li>
-      </ul>
     </div>
 
     <!-- Vendor -->

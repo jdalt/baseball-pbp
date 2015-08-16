@@ -31,6 +31,28 @@ angular.module('game')
     inning: 'T1',
     pitcher: vm.rosterTeam2[0],
     batter: vm.rosterTeam1[0],
+    base1: {},
+    base2: {},
+    base3: {}
   }
-})
 
+  vm.playActions = [
+    { abbrev: 'BB', outs: 0, minAdv: 1, name: 'Base on Balls' },
+    { abbrev: '1B', outs: 0, minAdv: 1, name: 'Single' },
+    { abbrev: '2B', outs: 0, minAdv: 2, name: 'Double' },
+    { abbrev: '3B', outs: 0, minAdv: 3, name: 'Triple' },
+    { abbrev: 'HR', outs: 0, minAdv: 4, name: 'Home Run' },
+    { abbrev: 'SO', outs: 1, minAdv: 0, name: 'Strike Out' },
+    { abbrev: 'SF', outs: 1, minAdv: 0, name: 'Sacrifice Fly' },
+    { abbrev: 'S',  outs: 1, minAdv: 0, name: 'Sacrifice' },
+    { abbrev: 'P',  outs: 1, minAdv: 0, name: 'Popout' },
+    { abbrev: 'F',  outs: 1, minAdv: 0, name: 'Flyout' },
+    { abbrev: 'L',  outs: 1, minAdv: 0, name: 'Lineout' },
+    { abbrev: 'FC', outs: 1, minAdv: 0, name: 'Fielders Choice' },
+    { abbrev: 'DP', outs: 2, minAdv: 0, name: 'Double Play' },
+    { abbrev: 'TP', outs: 3, minAdv: 0, name: 'Triple Play' },
+    { abbrev: 'B',  outs: 0, minAdv: 1, name: 'Balk' }
+  ]
+
+  vm.plays = []
+})

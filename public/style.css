@@ -4,3 +4,13 @@ html, body {
   font-family: arial, sans-serif;
   overflow: hidden;
 }
+
+ul#play-action-buttons {
+  margin: 0;
+  padding: 0;
+}
+
+ul#play-action-buttons li {
+  display: inline-block;
+  padding-right: .25em;
+}
