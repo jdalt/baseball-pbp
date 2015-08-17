@@ -9,13 +9,15 @@
   "license": "MIT",
   "dependencies": {
     "angular": "~1.4.3",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "angular-modal-service": "~0.6.7"
   },
   "install": {
     "path": "public/lib",
     "sources": {
       "angular": "bower_components/angular/angular.js",
-      "lodash": "bower_components/lodash/lodash.js"
+      "lodash": "bower_components/lodash/lodash.js",
+      "angular-modal-service": "bower_components/angular-modal-service/dst/angular-modal-service.js"
     }
   }
 }
