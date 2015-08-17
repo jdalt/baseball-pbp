@@ -131,5 +131,11 @@ angular.module('game')
     return _.findWhere(lineup, { order: batterNum })
   }
 
-
+})
+.filter('possiblePlayAction', function() {
+  return function(allPlayActions, gameState) {
+    return _.select(allPlayActions, function(playAction) {
+      return playAction.isPossible(gameState)
+    })
+  }
 })

@@ -19,7 +19,7 @@
       <div>3rd Base: {{ game.state.base3.name }}</div>
 
       <ul id="play-action-buttons">
-        <li ng-repeat="action in game.playActions">
+        <li ng-repeat="action in game.playActions | possiblePlayAction:game.state">
           <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
         </li>
       </ul>
