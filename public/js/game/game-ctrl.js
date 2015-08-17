@@ -32,9 +32,13 @@ angular.module('game')
     inning: 'T1',
     pitcher: vm.lineupTeam2[0],
     batter: vm.lineupTeam1[0],
-    base1: {},
-    base2: {},
-    base3: {}
+  }
+
+  vm.base = function(base) {
+    console.log('base', base)
+    var runner = _.findWhere(vm.state.runners, { base: base })
+    if(!runner) runner = { base: base, player: { name: "" } }
+    return runner
   }
 
   vm.playActions = playActions
@@ -42,23 +46,18 @@ angular.module('game')
   vm.currentPlay = {}
   vm.currentPlayAction = {}
 
-  vm.currentRunners = function() {
-    function pushRunner(player, start, runners) {
-      if(player.id) runners.push({ player: player, start: start })
-    }
-
-    var runners = []
-    pushRunner(vm.state.batter, 0, runners)
-    pushRunner(vm.state.base1, 1, runners)
-    pushRunner(vm.state.base2, 2, runners)
-    pushRunner(vm.state.base3, 3, runners)
+  vm.playRunners = function() {
+    var runners = _.map(vm.state.runners, function(baseRunner) {
+      return { player: baseRunner.player, start: baseRunner.base }
+    })
+    runners.unshift({ player: vm.state.batter, start: 0 })
     return runners
   }
 
   vm.createPlayAction = function(action) {
     console.log('action', action)
-    console.log('runners', vm.currentRunners())
-    var runners = vm.currentRunners()
+    console.log('runners', vm.state.runners)
+    var runners = vm.playRunners()
     _.each(runners, function(runner) {
       runner.minEnd = Math.min(4, runner.start + basesMustAdvance(runner.start, action, runners))
       if(action.advance.optimistic) {
@@ -72,6 +71,10 @@ angular.module('game')
       } else if( runner.start != 0 && action.advance.runnersModifiable) {
         runner.modifiable = true
       }
+      if(runner.start == 0 && action.outs > 0 && action.advance.batter == 0) {
+        runner.end = -1
+      }
+      return runner
     })
 
     console.log('runners', runners)
@@ -87,23 +90,21 @@ angular.module('game')
   }
 
   function updateRunners(runners) {
-    console.log('adv runners', runners)
-    // Do confirmation step, do in order of lead runner to batter?
+    console.log('ret runners', runners)
+    var outs = _.where(runners, { end: -1 }).length
+    var runs = _.where(runners, { end: 4 }).length
+    vm.state.outs += outs
+    vm.state.runs += runs // TODO: mark for each team
 
-    // Update Game State
-    function updateBase(baseNum, runners) {
-      var newRunner = _.select(runners, {end: baseNum})
-      if(newRunner.length > 1) { console.log('error: multiple runners on same base') } // more than 1 runner cannot be on the same base
-      if(newRunner.length == 1) {
-        var baseProp = 'base' + baseNum
-        vm.state[baseProp] = newRunner[0].player
-      }
-    }
-
-    clearBases()
-    updateBase(1, runners)
-    updateBase(2, runners)
-    updateBase(3, runners)
+    vm.state.runners =
+      _.chain(runners)
+      .select(function(runner) {
+        return (0 < runner.end) && (runner.end < 4)
+      })
+      .map(function(runner) {
+        return { base: runner.end, player: runner.player }
+      })
+      .value()
     vm.state.batter = nextBatter()
   }
 
@@ -117,10 +118,6 @@ angular.module('game')
     var mustAdvance = endBase - startBase
     if(mustAdvance < 0) mustAdvance = 0
     return mustAdvance
-  }
-
-  function clearBases() {
-    vm.state.base1 = vm.state.base2 = vm.state.base3 = {}
   }
 
   function nextBatter() {
