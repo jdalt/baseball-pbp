@@ -19,7 +19,7 @@
 
       <ul id="play-action-buttons">
         <li ng-repeat="action in game.playActions">
-          <button ng-click="createPlayAction(action)">{{action.abbrev}}</button>
+          <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
         </li>
       </ul>
 
