@@ -83,6 +83,19 @@ angular.module('game')
         runner.scored = true
       }
     })
+
+    AdvanceRunnersModal.showModal(runners)
+    .then(function(modal) {
+      console.log('modal', modal);
+      modal.close.then(function(runners) {
+        if(!runners) return;
+        console.log('runners from modal', runners)
+        updateRunners(runners)
+      });
+    });
+  }
+
+  function updateRunners(runners) {
     console.log('adv runners', runners)
     // Do confirmation step, do in order of lead runner to batter?
 
@@ -127,13 +140,5 @@ angular.module('game')
     return _.findWhere(lineup, { order: batterNum })
   }
 
-  AdvanceRunnersModal.showModal()
-  .then(function(modal) {
-    console.log('modal', modal);
-    modal.close.then(function(result) {
-      if(!result) return;
-      console.log('result', result)
-    });
-  });
 
 })

@@ -2,7 +2,7 @@ angular.module('advance-runners')
 .controller('AdvanceRunnersCtrl', function(close, runners) {
 
   var vm = this
-  vm.test = runners
+  vm.runnerPrefs = runners
 
   vm.close = function() {
     console.log('dieing')
@@ -11,7 +11,7 @@ angular.module('advance-runners')
 
   vm.save = function() {
     console.log('saving')
-    close('saving')
+    close(vm.runnerPrefs)
   }
 
 })
