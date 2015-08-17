@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, AdvanceRunnersModal) {
+.controller('GameCtrl', function($scope, _, playActions, AdvanceRunnersModal) {
   var vm = this
 
   vm.lineupTeam1 = [
@@ -36,24 +36,7 @@ angular.module('game')
     base3: {}
   }
 
-  vm.playActions = [
-    { abbrev: 'BB', outs: 0, batterAdv: 1, name: 'Base on Balls' },
-    { abbrev: '1B', outs: 0, batterAdv: 1, name: 'Single' },
-    { abbrev: '2B', outs: 0, batterAdv: 2, name: 'Double' },
-    { abbrev: '3B', outs: 0, batterAdv: 3, name: 'Triple' },
-    { abbrev: 'HR', outs: 0, batterAdv: 4, name: 'Home Run' },
-    { abbrev: 'SO', outs: 1, batterAdv: 0, name: 'Strike Out' },
-    { abbrev: 'SF', outs: 1, batterAdv: 0, name: 'Sacrifice Fly' },
-    { abbrev: 'S',  outs: 1, batterAdv: 0, name: 'Sacrifice' },
-    { abbrev: 'P',  outs: 1, batterAdv: 0, name: 'Popout' },
-    { abbrev: 'F',  outs: 1, batterAdv: 0, name: 'Flyout' },
-    { abbrev: 'L',  outs: 1, batterAdv: 0, name: 'Lineout' },
-    { abbrev: 'FC', outs: 1, batterAdv: 0, name: 'Fielders Choice' },
-    { abbrev: 'DP', outs: 2, batterAdv: 0, name: 'Double Play' },
-    { abbrev: 'TP', outs: 3, batterAdv: 0, name: 'Triple Play' },
-    { abbrev: 'B',  outs: 0, batterAdv: 1, name: 'Balk' } /* still haven't thought this one through... */
-  ]
-
+  vm.playActions = playActions
   vm.plays = []
   vm.currentPlay = {}
   vm.currentPlayAction = {}
@@ -76,15 +59,21 @@ angular.module('game')
     console.log('runners', vm.currentRunners())
     var runners = vm.currentRunners()
     _.each(runners, function(runner) {
-      // todo: runner.minEnd; runner.defaultEnd; runner.defaultOut
-      runner.end = runner.start + basesMustAdvance(runner.start, action, runners)
-      if(runner.end >= 4) {
-        runner.end = 4
-        runner.scored = true
+      runner.minEnd = Math.min(4, runner.start + basesMustAdvance(runner.start, action, runners))
+      if(action.advance.optimistic) {
+        runner.end = Math.min(4, runner.start + action.advance.batter)
+      } else {
+        runner.end = runner.minEnd
+      }
+      runner.modifiable = false
+      if(runner.start == 0 && action.advance.batterModifiable) {
+        runner.modifiable = true
+      } else if( runner.start != 0 && action.advance.runnersModifiable) {
+        runner.modifiable = true
       }
     })
 
-    AdvanceRunnersModal.showModal(runners)
+    AdvanceRunnersModal.showModal(runners, action.outs)
     .then(function(modal) {
       console.log('modal', modal);
       modal.close.then(function(runners) {
@@ -122,7 +111,7 @@ angular.module('game')
     var runnersBehind = _.select(runners, function(runner) {
       return runner.start < startBase
     })
-    var endBase = runnersBehind.length - action.outs + action.batterAdv
+    var endBase = runnersBehind.length - action.outs + action.advance.batter
     var mustAdvance = endBase - startBase
     if(mustAdvance < 0) mustAdvance = 0
     return mustAdvance
