@@ -1,12 +1,13 @@
 angular.module('advance-runners')
 .factory('AdvanceRunnersModal', function(ModalService) {
 
-  function createSettings(runners) {
+  function createSettings(runners, outs) {
     return {
       templateUrl: 'js/advance-runners/advance-runners.tmpl.html',
       controller: 'AdvanceRunnersCtrl',
       controllerAs: 'runners',
       inputs: {
+        outs: outs,
         runners: runners
       }
     }

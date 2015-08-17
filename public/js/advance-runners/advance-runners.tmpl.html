@@ -1,9 +1,28 @@
 <div id="overlay" class="modal">
   <div id="modal-pane">
     <h1>Advance Runners</h1>
-    <div>
-      Runners Default: {{ runners.runnerPrefs }}
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Initial Base</th>
+          <th>Player</th>
+          <th>End Base</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="runner in runners.runnerPrefs">
+          <td>{{ runners.baseToString[runner.start] }}</td>
+          <td>{{ runner.player.name }}</td>
+          <td>
+            <span ng-if="!runner.modifiable">{{runners.baseToString[runner.end]}}</span>
+            <select ng-if="runner.modifiable"
+              ng-options="base.num as base.name for base in runner.possibleBases"
+              ng-model="runner.end">
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <button ng-click="runners.close()">Cancel</button>
     <button ng-click="runners.save()">Save</button>
   </div>
