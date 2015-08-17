@@ -29,6 +29,7 @@ angular.module('game')
   vm.state = {
     outs: 0,
     runs: 0,
+    runners: [],
     inning: 'T1',
     pitcher: vm.lineupTeam2[0],
     batter: vm.lineupTeam1[0],
