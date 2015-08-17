@@ -28,6 +28,7 @@ angular.module('game')
 
   vm.state = {
     outs: 0,
+    runs: 0,
     inning: 'T1',
     pitcher: vm.lineupTeam2[0],
     batter: vm.lineupTeam1[0],
@@ -73,12 +74,13 @@ angular.module('game')
       }
     })
 
-    AdvanceRunnersModal.showModal(runners, action.outs)
+    console.log('runners', runners)
+
+    AdvanceRunnersModal.showModal(runners, action)
     .then(function(modal) {
       console.log('modal', modal);
       modal.close.then(function(runners) {
         if(!runners) return;
-        console.log('runners from modal', runners)
         updateRunners(runners)
       });
     });

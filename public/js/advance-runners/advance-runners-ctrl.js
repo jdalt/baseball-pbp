@@ -1,45 +1,41 @@
 angular.module('advance-runners')
-.controller('AdvanceRunnersCtrl', function(close, runners, outs, _) {
+.controller('AdvanceRunnersCtrl', function(close, runners, action, _) {
 
   var vm = this
-  vm.baseToString = {
-    0: "Batter",
-    1: "1st",
-    2: "2nd",
-    3: "3rd",
-    4: "Score"
-  }
+  vm.baseToString = {}
   vm.baseToString[-1] = "Out"
+  vm.baseToString[0]  = "Batting"
+  vm.baseToString[1]  = "1st"
+  vm.baseToString[2]  = "2nd"
+  vm.baseToString[3]  = "3rd"
+  vm.baseToString[4]  = "Home"
 
-  vm.outs = outs
+  vm.action = action
   vm.runnerPrefs = _.map(runners, function(runner) {
-    runner.possibleBases = possibleBases(runner.minEnd, (outs == 0))
+    runner.possibleBases = possibleBases(runner.minEnd, (action.outs == 0))
     return runner
   })
 
   function possibleBases(minBase, removeOut) {
-    console.log('bts', vm.baseToString)
-    console.log('minBase', minBase, 'removeOut', removeOut)
     var possible = []
     var baseRange = _.range(minBase, 5)
     if(!removeOut) baseRange.unshift(-1) // -1 is the base code for an out
-    console.log('baseRange', baseRange)
     _.map(baseRange, function(base) {
       possible.push({ num: base, name: vm.baseToString[base] })
     })
-    console.log('possibleBases', possible)
     return possible
   }
-  console.log('runners w/in modal', runners)
 
   vm.close = function() {
-    console.log('dieing')
+    console.log('cancel')
     close(false)
   }
 
   vm.save = function() {
-    console.log('saving')
-    close(vm.runnerPrefs)
+    var runners = _.map(vm.runnerPrefs, function(runnerPref) {
+     return _.pick(runnerPref, 'player', 'start', 'end')
+    })
+    close(runners)
   }
 
 })

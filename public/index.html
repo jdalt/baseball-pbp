@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="game" ng-controller="GameCtrl as game">
+      <div>Runs: {{ game.state.runs }}</div>
       <div>Outs: {{ game.state.outs }}</div>
       <div>Inning: {{ game.state.inning }}</div>
       <div>Pitcher: {{ game.state.pitcher.name }}</div>
