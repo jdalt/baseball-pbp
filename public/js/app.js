@@ -2,4 +2,4 @@
 
 angular.module('baseball-pbp', ['game'])
 
-angular.module('game', ['util', 'models','angularModalService'])
+angular.module('game', ['util', 'models','advance-runners'])

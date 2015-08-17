@@ -1,4 +1,4 @@
-angular.module('game')
+angular.module('advance-runners')
 .controller('AdvanceRunnersCtrl', function(close, runners) {
 
   var vm = this

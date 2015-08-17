@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _) {
+.controller('GameCtrl', function($scope, _, AdvanceRunnersModal) {
   var vm = this
 
   vm.lineupTeam1 = [
@@ -126,5 +126,14 @@ angular.module('game')
     if(batterNum > lineup.length) batterNum = 1
     return _.findWhere(lineup, { order: batterNum })
   }
+
+  AdvanceRunnersModal.showModal()
+  .then(function(modal) {
+    console.log('modal', modal);
+    modal.close.then(function(result) {
+      if(!result) return;
+      console.log('result', result)
+    });
+  });
 
 })
