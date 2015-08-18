@@ -49,37 +49,14 @@ angular.module('game')
 
   vm.playRunners = function() {
     var runners = _.map(vm.state.runners, function(baseRunner) {
-      return { player: baseRunner.player, start: baseRunner.base }
+      return { player: baseRunner.player, start: baseRunner.base, isBatter: false }
     })
-    runners.unshift({ player: vm.state.batter, start: 0 })
+    runners.unshift({ player: vm.state.batter, start: 0, isBatter: true })
     return runners
   }
 
   vm.createPlayAction = function(action) {
-    console.log('action', action)
-    console.log('runners', vm.state.runners)
     var runners = vm.playRunners()
-    _.each(runners, function(runner) {
-      runner.minEnd = Math.min(4, runner.start + basesMustAdvance(runner.start, action, runners))
-      if(action.advance.optimistic) {
-        runner.end = Math.min(4, runner.start + action.advance.batter)
-      } else {
-        runner.end = runner.minEnd
-      }
-      runner.modifiable = false
-      if(runner.start == 0 && action.advance.batterModifiable) {
-        runner.modifiable = true
-      } else if( runner.start != 0 && action.advance.runnersModifiable) {
-        runner.modifiable = true
-      }
-      if(runner.start == 0 && action.outs > 0 && action.advance.batter == 0) {
-        runner.end = -1
-      }
-      return runner
-    })
-
-    console.log('runners', runners)
-
     AdvanceRunnersModal.showModal(runners, action)
     .then(function(modal) {
       console.log('modal', modal);
@@ -97,28 +74,11 @@ angular.module('game')
     vm.state.outs += outs
     vm.state.runs += runs // TODO: mark for each team
 
-    vm.state.runners =
-      _.chain(runners)
-      .select(function(runner) {
-        return (0 < runner.end) && (runner.end < 4)
-      })
-      .map(function(runner) {
-        return { base: runner.end, player: runner.player }
-      })
+    vm.state.runners = _.chain(runners)
+      .select(function(runner) { return (0 < runner.end) && (runner.end < 4) })
+      .map(function(runner) { return { base: runner.end, player: runner.player } })
       .value()
     vm.state.batter = nextBatter()
-  }
-
-  // Precondition: valid runners, will not return valid values if 2 runners on
-  // same base
-  function basesMustAdvance(startBase, action, runners) {
-    var runnersBehind = _.select(runners, function(runner) {
-      return runner.start < startBase
-    })
-    var endBase = runnersBehind.length - action.outs + action.advance.batter
-    var mustAdvance = endBase - startBase
-    if(mustAdvance < 0) mustAdvance = 0
-    return mustAdvance
   }
 
   function nextBatter() {
