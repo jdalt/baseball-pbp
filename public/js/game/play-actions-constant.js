@@ -4,6 +4,7 @@
   PlayAction properties:
     { abbrev: 'BB', // Standard scoring abbreviation
       outs: 0, // Outs awarded for this play actions
+      atBatOnly, // actions that always complete an at bat --> true; actions that can also occur before and after --> true
       name: 'Base on Balls', // Full name of play action
       advancement: {
         batter: 1, // how far the batter advances by default
@@ -20,127 +21,110 @@
 
 angular.module('game')
 .constant('playActions', [
-    { abbrev: 'BB', outs: 0, name: 'Base on Balls', advance:
+    { abbrev: 'BB', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Base on Balls', advance:
       { batter: 1,
         batterModifiable: false,
         runnersModifiable: false,
         optimistic: false
       },
-      isPossible: function() { return true }
     },
-    { abbrev: '1B', outs: 0, name: 'Single', advance:
+    { abbrev: '1B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Single', advance:
       { batter: 1,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
-      isPossible: function() { return true }
     },
-    { abbrev: '2B', outs: 0, name: 'Double', advance:
+    { abbrev: '2B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Double', advance:
       { batter: 2,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
-      isPossible: function() { return true }
     },
-    { abbrev: '3B', outs: 0, name: 'Triple', advance:
+    { abbrev: '3B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Triple', advance:
       { batter: 3,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
-      isPossible: function() { return true }
     },
-    { abbrev: 'HR', outs: 0, name: 'Home Run', advance:
+    { abbrev: 'HR', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Home Run', advance:
       { batter: 4,
         batterModifiable: false,
         runnersModifiable: false,
         optimistic: true
       },
-      isPossible: function() { return true }
     },
-    { abbrev: 'K', outs: 1, name: 'Strike Out', advance:
+    { abbrev: 'K', outs: 1, atBatOnly: true, requiredRunners: 0, name: 'Strike Out', advance:
       { batter: 0,
         batterModifiable: false,
         runnersModifiable: false,
         optimistic: false
       },
-      isPossible: function() { return true }
     },
-    { abbrev: 'SAC', outs: 1, name: 'Sacrifice', advance:
+    { abbrev: 'SAC', outs: 1, atBatOnly: true, requiredRunners: 1, name: 'Sacrifice', advance:
       { batter: 0,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: false
       },
-      isPossible: function(gameState) {
-        if(gameState.runners.length < 1) return false
-        if(gameState.outs >= 2) return false
-        return true
-      }
     },
-    { abbrev: 'F',  outs: 1, name: 'Flyout', advance:
+    { abbrev: 'F',  outs: 1, atBatOnly: true, requiredRunners: 0, name: 'Flyout', advance:
       { batter: 0,
         batterModifiable: false,
         runnersModifiable: false,
         optimistic: false
       },
-      isPossible: function() { return true }
     },
-    { abbrev: 'FC', outs: 1, name: 'Fielders Choice', advance:
+    { abbrev: 'FC', outs: 1, atBatOnly: true, requiredRunners: 1, name: 'Fielders Choice', advance:
       { batter: 1,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: false
       },
-      isPossible: function(gameState) {
-        if(gameState.runners.length < 1) return false
-        return true
-      }
     },
-    { abbrev: 'DP', outs: 2, name: 'Double Play', advance:
+    { abbrev: 'DP', outs: 2, atBatOnly: true, requiredRunners: 1, name: 'Double Play', advance:
       { batter: 0,
         batterModifiable: true,
         runnersModifiable: true,
         optimistic: false
       },
-      isPossible: function(gameState) {
-        if(gameState.runners.length < 1) return false
-        if(gameState.outs > 1) return false
-        return true
-      }
     },
-    { abbrev: 'TP', outs: 3, name: 'Triple Play', advance:
+    { abbrev: 'TP', outs: 3, atBatOnly: true, requiredRunners: 2, name: 'Triple Play', advance:
       { batter: 0,
         batterModifiable: true,
         runnersModifiable: true,
         optimistic: false
       },
-      isPossible: function(gameState) {
-        if(gameState.runners.length < 2) return false
-        if(gameState.outs > 0) return false
-        return true
-      }
     },
-    { abbrev: 'E',  outs: 0, name: 'Error', advance:
+    { abbrev: 'E', outs: 0, atBatOnly: false, requiredRunners: 0, name: 'Error', advance:
       { batter: 1,
         batterModifiable: true,
         runnersModifiable: true,
         optimistic: true
       },
-      isPossible: function() { return true }
     },
-    { abbrev: 'B',  outs: 0, name: 'Balk', advance:
+    { abbrev: 'St', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Steal', advance:
       { batter: 0,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: false
       },
-      isPossible: function(gameState) {
-        if(gameState.runners.length < 1) return false
-        return true
-      }
+    },
+    { abbrev: 'Sub', outs: 0, atBatOnly: false, requiredRunners: 0, name: 'Substitution', advance:
+      { batter: 0,
+        batterModifiable: true,
+        runnersModifiable: true,
+        optimistic: false
+      },
+    },
+    { abbrev: 'B', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Balk', advance:
+      { batter: 0,
+        batterModifiable: false,
+        runnersModifiable: true,
+        optimistic: false
+      },
     },
   ]
 )

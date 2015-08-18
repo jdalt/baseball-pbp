@@ -132,8 +132,12 @@ angular.module('game')
 })
 .filter('possiblePlayAction', function() {
   return function(allPlayActions, gameState) {
+    var numRunners = gameState.runners.length
+    var remainingOuts = 3 - gameState.outs
     return _.select(allPlayActions, function(playAction) {
-      return playAction.isPossible(gameState)
+      if(playAction.outs > remainingOuts) return false
+      if(playAction.requiredRunners > numRunners) return false
+      return true
     })
   }
 })
