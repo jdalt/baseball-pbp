@@ -36,7 +36,6 @@ angular.module('game')
   }
 
   vm.base = function(base) {
-    console.log('base', base)
     var runner = _.findWhere(vm.state.runners, { base: base })
     if(!runner) runner = { base: base, player: { name: "" } }
     return runner
