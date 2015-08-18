@@ -1,22 +1,26 @@
 /*
-  PlayActions describe how many outs an event will result in and how the base runners (including the batter) are able to advance.
+  PlayActions
 
-  PlayAction properties:
-    { abbrev: 'BB', // Standard scoring abbreviation
-      outs: 0, // Outs awarded for this play actions
-      atBatOnly, // actions that always complete an at bat --> true; actions that can also occur before and after --> true
-      name: 'Base on Balls', // Full name of play action
-      advancement: {
-        batter: 1, // how far the batter advances by default
-        batterModifiable: true, // whether user can select end base for batter
-        runnersModifiable: false, // whether use can select end base for runners
-        optimistic: false // true: runners advance by same amount as batter by defaul, false: runners advance minimum possible bases
-      }
+  Describe how many outs an event will result in and how the base runners (including the batter) are able to advance.
+
+  Properties
+
+  {
+    abbrev: 'BB', // Standard scoring abbreviation
+    outs: 0, // Outs awarded for this play actions
+    atBatOnly, // actions that always complete an at bat --> true; actions that can also occur before and after --> true
+    name: 'Base on Balls', // Full name of play action
+    advancement: {
+      batter: 1, // how far the batter is guaranteed to advance by default
+      batterModifiable: true, // whether user can select end base for batter
+      runnersModifiable: false, // whether use can select end base for runners
+      optimistic: false // true: runners advance by same amount as batter by defaul, false: runners advance minimum possible bases
     }
+  }
 
-    Logical Consquences of This Model
-    outs == 1 && advance.batter == 0 --> the batter is out
-    outs == 1 && advance.batter == 1 --> a runner is out (a runner must exist)
+  Logical Consquences of This Model
+  outs == 1 && advance.batter == 0 --> the batter is out
+  outs == 1 && advance.batter == 1 --> a runner is out (a runner must exist)
 */
 
 angular.module('game')
