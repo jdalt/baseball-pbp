@@ -32,6 +32,13 @@ angular.module('game')
         optimistic: false
       },
     },
+    { abbrev: 'IBB', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Intentional Base on Balls', advance:
+      { batter: 1,
+        batterModifiable: false,
+        runnersModifiable: false,
+        optimistic: false
+      },
+    },
     { abbrev: '1B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Single', advance:
       { batter: 1,
         batterModifiable: false,
