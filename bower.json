@@ -10,7 +10,8 @@
   "dependencies": {
     "angular": "~1.4.3",
     "lodash": "~3.10.1",
-    "angular-modal-service": "~0.6.7"
+    "angular-modal-service": "~0.6.7",
+    "angular-mocks": "~1.4.4"
   },
   "install": {
     "path": "public/lib",
