@@ -110,7 +110,7 @@ angular.module('game')
       },
     },
     { abbrev: 'E', outs: 0, atBatOnly: false, requiredRunners: 0, name: 'Error', advance:
-      { batter: 1,
+      { batter: 0,
         batterModifiable: true,
         runnersModifiable: true,
         optimistic: true
