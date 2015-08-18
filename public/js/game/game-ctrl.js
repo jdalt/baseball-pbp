@@ -77,7 +77,9 @@ angular.module('game')
       .select(function(runner) { return (0 < runner.end) && (runner.end < 4) })
       .map(function(runner) { return { base: runner.end, player: runner.player } })
       .value()
-    vm.state.batter = nextBatter()
+
+    var batterRunner = _.findWhere(runners, { player: vm.state.batter })
+    if(batterRunner.end != 0) vm.state.batter = nextBatter() // don't advance if the batter is still batting
   }
 
   function nextBatter() {
