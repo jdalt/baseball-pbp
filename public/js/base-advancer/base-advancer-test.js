@@ -17,11 +17,25 @@ describe('BaseAdvancerFactory', function() {
   describe('HR', function() {
     it('should score all runners', function() {
       var action = getAction('HR')
-
       var runners = BA.process(runnerOnFirst, action)
+
       expectDefaultEnd(runners, [4,4])
       expectModifiable(runners, [false,false])
       expect(runners[0].possibleBases.length).toBe(1)
+    })
+  })
+
+  describe('FC', function() {
+    describe('with runner on first' function() {
+      it('should score all runners', function() {
+        var action = getAction('FC')
+        var runners = BA.process(runnerOnFirst, action)
+
+        expectDefaultEnd(runners, [1,-1])
+        expectModifiable(runners, [false,false])
+        expect(runners[0].possibleBases.length).toBe(1)
+        expect(runners[1].possibleBases.length).toBe(1)
+      })
     })
   })
 
