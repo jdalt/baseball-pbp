@@ -3,13 +3,6 @@ angular.module('advance-runners')
 
   var vm = this
   vm.action = action
-  vm.baseToString = {}
-  vm.baseToString[-1] = "Out"
-  vm.baseToString[0]  = "Batting"
-  vm.baseToString[1]  = "1st"
-  vm.baseToString[2]  = "2nd"
-  vm.baseToString[3]  = "3rd"
-  vm.baseToString[4]  = "Home"
 
   vm.close = function() {
     console.log('cancel')
@@ -110,7 +103,8 @@ angular.module('advance-runners')
     if(!omitOut) baseRange.unshift(-1) // -1 is the base code for an out
 
     _.each(baseRange, function(base) {
-      possible.push({ num: base, name: vm.baseToString[base] })
+      var baseKey = (base == -1) ? 'OUT' : 'BASE_' + base
+      possible.push({ num: base, key: baseKey })
     })
     return possible
   }

@@ -7,12 +7,12 @@
       <tbody>
         <tr ng-repeat="runner in runners.runnerPrefs">
           <td>{{ runner.player.name }}</td>
-          <td>{{ runners.baseToString[runner.start] }}</td>
+          <td>{{ 'BASE_' + runner.start | translate }}</td>
           <td>--></td>
           <td>
-            <span ng-if="!runner.modifiable">{{runners.baseToString[runner.end]}}</span>
+            <span ng-if="!runner.modifiable">{{ 'BASE_' + runner.end | translate}}</span>
             <select ng-if="runner.modifiable"
-              ng-options="base.num as base.name for base in runner.possibleBases"
+              ng-options="base.num as base.key|translate for base in runner.possibleBases"
               ng-model="runner.end">
             </select>
           </td>
