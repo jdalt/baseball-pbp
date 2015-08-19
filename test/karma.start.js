@@ -3,24 +3,25 @@
 // Template:
 //   https://github.com/js-data/js-data-angular-mocks/blob/master/karma.start.js
 
-var $compile, $rootScope, $q, $log
+var $compile, $rootScope, $q, $log, $controller
 
 beforeEach(function () {
   module('baseball-pbp')
   module('templates')
-});
+})
 
 beforeEach(function() {
-  inject(function (_$compile_, _$rootScope_, _$q_, _$log_) {
+  inject(function (_$compile_, _$rootScope_, _$q_, _$log_, _$controller_) {
     // Setup global mocks
-    $compile = _$compile_;
-    $rootScope = _$rootScope_;
-    $q = _$q_;
-    $log = _$log_;
-  });
-});
+    $compile = _$compile_
+    $rootScope = _$rootScope_
+    $controller = _$controller_
+    $q = _$q_
+    $log = _$log_
+  })
+})
 
 // Clean up after each test
 afterEach(function () {
-  $log.reset();
+  $log.reset()
 })
