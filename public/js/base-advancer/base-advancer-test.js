@@ -85,7 +85,7 @@ function createPlayRunners(basesArray) {
 var runnerOnFirst = createPlayRunners([1])
 var runnerOnSecond = createPlayRunners([2])
 var runnerOnThird = createPlayRunners([3])
-var runnersOnFirstSecond = createPlayRunners([1,2])
+var runnersOnFirstAndSecond = createPlayRunners([1,2])
 var runnersAtTheCorners = createPlayRunners([1,3])
 var runnersAtSecondThird = createPlayRunners([2,3])
 var basesLoaded = createPlayRunners([1,2,3])
