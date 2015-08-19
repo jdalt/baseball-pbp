@@ -51,6 +51,12 @@ describe('BaseAdvancerFactory', function() {
     })
   }
 
+  function expectPossibleBases(runner, possibleBases) {
+    _.each(possibleBases, function(base, index) {
+      expect(runner.possibleBases[index].num).toBe(base)
+    })
+  }
+
 })
 
 
