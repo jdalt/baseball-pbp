@@ -26,15 +26,29 @@ describe('BaseAdvancerFactory', function() {
   })
 
   describe('FC', function() {
-    describe('with runner on first' function() {
-      it('should score all runners', function() {
+    describe('with a runner on first', function() {
+      it('should auto advance batter and auto 1st Base Runner out', function() {
         var action = getAction('FC')
         var runners = BA.process(runnerOnFirst, action)
 
         expectDefaultEnd(runners, [1,-1])
         expectModifiable(runners, [false,false])
-        expect(runners[0].possibleBases.length).toBe(1)
-        expect(runners[1].possibleBases.length).toBe(1)
+        // Should possible bases be consistent with non-modifiable status?
+        // expect(runners[0].possibleBases.length).toBe(1)
+        // expect(runners[1].possibleBases.length).toBe(1)
+      })
+    })
+
+    describe('with runners on first and second', function() {
+      it('should auto advance batter and allow 1st Base Runner and 2nd Base Runner for UI', function() {
+        var action = getAction('FC')
+        var runners = BA.process(runnersOnFirstAndSecond, action)
+
+        console.log('runner', runners[1].possibleBases)
+        expectDefaultEnd(runners, [1,-1,2])
+        expectModifiable(runners, [false,true,true])
+        expectPossibleBases(runners[1], [-1,2,3,4])
+        expectPossibleBases(runners[2], [-1,2,3,4])
       })
     })
   })
