@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, playActions, AdvanceRunnersModal) {
+.controller('GameCtrl', function($scope, _, playActions, BaseAdvancer, AdvanceRunnersModal) {
   var vm = this
 
   vm.lineupTeam1 = [
