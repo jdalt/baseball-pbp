@@ -55,7 +55,7 @@ angular.module('game')
   }
 
   vm.createPlayAction = function(action) {
-    var runners = vm.playRunners()
+    var runners = BaseAdvancer.process(vm.playRunners(), action)
     AdvanceRunnersModal.showModal(runners, action)
     .then(function(modal) {
       console.log('modal', modal);

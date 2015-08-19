@@ -5,7 +5,7 @@ angular.module('advance-runners')
     return {
       templateUrl: 'js/advance-runners/advance-runners.tmpl.html',
       controller: 'AdvanceRunnersCtrl',
-      controllerAs: 'runners',
+      controllerAs: 'advModal',
       inputs: {
         action: action,
         runners: runners

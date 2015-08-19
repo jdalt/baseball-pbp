@@ -5,7 +5,7 @@
     <h3>Advance Runners</h3>
     <table>
       <tbody>
-        <tr ng-repeat="runner in runners.runnerPrefs">
+        <tr ng-repeat="runner in advModal.runners">
           <td>{{ runner.player.name }}</td>
           <td>{{ 'BASE_' + runner.start | translate }}</td>
           <td>--></td>
@@ -19,8 +19,8 @@
         </tr>
       </tbody>
     </table>
-    <button ng-click="runners.close()">Cancel</button>
-    <button ng-click="runners.save()">Save</button>
+    <button ng-click="advModal.close()">Cancel</button>
+    <button ng-click="advModal.save()">Save</button>
   </div>
 </div>
 
