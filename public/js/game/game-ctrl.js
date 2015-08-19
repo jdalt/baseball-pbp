@@ -56,14 +56,19 @@ angular.module('game')
 
   vm.createPlayAction = function(action) {
     var runners = BaseAdvancer.process(vm.playRunners(), action)
-    AdvanceRunnersModal.showModal(runners, action)
-    .then(function(modal) {
-      console.log('modal', modal);
-      modal.close.then(function(runners) {
-        if(!runners) return;
-        updateRunners(runners)
+    var autoAdvance = _.every(runners, function(r) { return !r.modifiable })
+    if(autoAdvance) {
+      updateRunners(runners)
+    } else {
+      AdvanceRunnersModal.showModal(runners, action)
+      .then(function(modal) {
+        console.log('modal', modal);
+        modal.close.then(function(runners) {
+          if(!runners) return;
+          updateRunners(runners)
+        });
       });
-    });
+    }
   }
 
   function updateRunners(runners) {
