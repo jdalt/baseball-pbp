@@ -1,4 +1,4 @@
-angular.module('advance-runners')
+angular.module('base-advancer')
 .factory('BaseAdvancer', function(_) {
 
   function process(runners, action) {
