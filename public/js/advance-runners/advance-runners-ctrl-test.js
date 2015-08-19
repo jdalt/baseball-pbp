@@ -1,26 +1,46 @@
 describe('AdvanceRunnersCtrl', function() {
-  var scope
-  var elem
+  var scope, elem, ctrl
+  var PA
 
-  beforeEach(inject(function() {
-    scope = $rootScope.$new()
-  }))
+  beforeEach(function() {
+    inject(function(playActions) {
+      PA = playActions
+    })
+  })
 
-  function compile() {
-    var tmpl = '<div><span id="smoke-test"></span></div>'
-
-    // _.defaults(scope, { })
-    elem = $compile(tmpl)(scope)
+  function buildController(action, runners) {
+    inject(function(playActions) {
+      scope = $rootScope.$new()
+      PA = playActions
+      ctrl = $controller('AdvanceRunnersCtrl', { $scope: scope, close: {}, action: action, runners: runners });
+    })
     scope.$digest()
   }
 
-  it('should compile', function() {
-    compile()
-    expect(getElem('#smoke-test').length).toEqual(1)
-  })
-
-  function getElem(selector) {
-    return elem.find(selector).eq(0)
+  function getAction(abbrev) {
+    return _.findWhere(PA, { abbrev: abbrev })
   }
+
+  describe('on HR', function() {
+    it('should score both runners', function() {
+      var action = getAction('HR')
+      var runners = [
+        { player: { name: "Jim", order: 1 },
+          start: 0,
+          isBatter: true
+        },
+        { player: { name: "Zooey", order: 8 },
+          start: 1,
+          isBatter: false
+        }
+      ]
+
+      buildController(action, runners)
+      console.log('ctrl.runners', ctrl.runnerPrefs)
+
+      expect(ctrl.runnerPrefs[0].end).toBe(4)
+      expect(ctrl.runnerPrefs[1].end).toBe(4)
+    })
+  })
 
 })
