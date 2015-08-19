@@ -11,14 +11,15 @@
     "angular": "~1.4.3",
     "lodash": "~3.10.1",
     "angular-modal-service": "~0.6.7",
-    "angular-mocks": "~1.4.4"
+    "angular-mocks": "~1.4.4",
+    "angular-translate": "~2.7.2",
+    "jquery": "~2.1.4"
   },
   "install": {
     "path": "public/lib",
-    "sources": {
-      "angular": "bower_components/angular/angular.js",
-      "lodash": "bower_components/lodash/lodash.js",
-      "angular-modal-service": "bower_components/angular-modal-service/dst/angular-modal-service.js"
-    }
+    "ignore": [
+      "jquery",
+      "angular-mocks"
+    ]
   }
 }
