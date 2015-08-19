@@ -89,7 +89,7 @@ angular.module('base-advancer')
       if(!omitOut) baseRange.unshift(-1) // -1 is the base code for an out
 
       _.each(baseRange, function(base) {
-        var baseKey = (base == -1) ? 'OUT' : 'BASE_' + base
+        var baseKey = 'BASE_' + base
         possible.push({ num: base, key: baseKey })
       })
       return possible
