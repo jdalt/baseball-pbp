@@ -23,7 +23,7 @@
   outs == 1 && advance.batter == 1 --> a runner is out (a runner must exist)
 */
 
-angular.module('game')
+angular.module('play-action')
 .constant('playActions', [
     { abbrev: 'BB', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Base on Balls', advance:
       { batter: 1,
