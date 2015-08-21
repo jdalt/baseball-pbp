@@ -62,7 +62,6 @@ angular.module('game')
     } else {
       AdvanceRunnersModal.showModal(runners, action)
       .then(function(modal) {
-        console.log('modal', modal);
         modal.close.then(function(runners) {
           if(!runners) return;
           updateGameState(runners, action)
