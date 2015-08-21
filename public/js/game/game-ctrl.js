@@ -5,6 +5,8 @@ angular.module('game')
   vm.awayTeam = {
     name: 'Leland Giants',
     pitcher: { id: 1001, name: "Jimmy"},
+    runs: 0,
+    batterIndex: 0,
     lineup: [
       { id: 1001, order: 1, name: "Fig", position: 'DH'},
       { id: 1002, order: 2, name: "Ralph", position: 'C'},
@@ -20,6 +22,8 @@ angular.module('game')
   vm.homeTeam = {
     name: 'White Elepants',
     pitcher: { id: 2001, name: "Suza"},
+    runs: 0,
+    batterIndex: 0,
     lineup: [
       { id: 2001, order: 1, name: "Landon", position: 'DH'},
       { id: 2002, order: 2, name: "Garbonzo", position: 'C'},
@@ -67,31 +71,39 @@ angular.module('game')
     }
   }
 
-  initializeGame()
+  vm.nextInning = function() {
+    if(vm.state.isInningTop) {
+      setInning(vm.state.inning, false)
+    } else {
+      setInning(vm.state.inning + 1, true)
+    }
+  }
 
-  function initializeGame() {
-    // Initial Game State
+  setInning(1,true)
+
+  function setInning(inning, isTop) {
+    var teamBatting, teamPitching
+
+    if(isTop) {
+      teamBatting = vm.awayTeam
+      teamPitching = vm.homeTeam
+    } else {
+      teamBatting = vm.homeTeam
+      teamPitching = vm.awayTeam
+    }
+
     vm.state = {
-      inning: 'T1',
+      inning: inning,
+      isInningTop: isTop,
       outs: 0,
-      runs: 0,
-      teamAtBat: vm.awayTeam,
-      teamPitching: vm.homeTeam,
-      pitcher: vm.homeTeam.pitcher,
-      batter: vm.awayTeam.lineup[0],
+      batter: teamBatting.lineup[teamBatting.batterIndex],
+      pitcher: teamPitching.pitcher,
+      teamBatting: teamBatting,
+      teamPitching: teamPitching,
       runners: []
     }
 
-    // Initial Play, fence post problem
-    vm.currentAtBat = {
-      inning: 'T1',
-      outsStart: 0,
-      runsStart: 0,
-      batter: vm.state.batter,
-      pitcher: vm.state.pitcher,
-      pitches: [],
-      playActions: []
-    }
+    vm.currentAtBat = createAtBat()
   }
 
   function updateGameState(runners, action) {
@@ -102,7 +114,7 @@ angular.module('game')
     vm.currentAtBat.playActions.push(newPlayAction)
 
     vm.state.outs += outs
-    vm.state.runs += runs // TODO: mark for each team
+    vm.state.teamBatting.runs += runs
 
     vm.state.runners = _.chain(runners)
       .select(function(runner) { return (0 < runner.end) && (runner.end < 4) })
@@ -128,8 +140,8 @@ angular.module('game')
     return {
       outsStart: vm.state.outs,
       outsEnd: vm.state.outs + outs,
-      runsStart: vm.state.runs,
-      runsEnd: vm.state.runs + runs,
+      runsStart: vm.state.teamBatting.runs,
+      runsEnd: vm.state.teamBatting.runs + runs,
       action: action,
       runners: runners,
       fielders: {}
@@ -141,8 +153,8 @@ angular.module('game')
     return {
       inning: vm.state.inning,
       outsStart: vm.state.outs,
-      runsStart: vm.state.runs,
-      batter: vm.state.batter,
+      runsStart: vm.state.teamBatting.runs,
+      batter: vm.state.teambatter,
       pitcher: vm.state.pitcher,
       pitches: [],
       playActions: []
@@ -158,9 +170,9 @@ angular.module('game')
   }
 
   function nextBatter() {
-    var batterNum = vm.state.batter.order + 1
-    if(batterNum > vm.teamAtBat.lineup.length) batterNum = 1
-    return _.findWhere(vm.teamAtBat.lineup, { order: batterNum })
+    vm.state.teamBatting.batterIndex++
+    if(vm.state.teamBatting.batterIndex >= vm.state.teamBatting.lineup.length) vm.state.teamBatting.batterIndex = 0
+    return vm.state.teamBatting.lineup[vm.state.teamBatting.batterIndex]
   }
 
 })
