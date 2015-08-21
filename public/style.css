@@ -5,6 +5,10 @@ html, body {
   overflow: hidden;
 }
 
+h4 {
+  margin: 0
+}
+
 ul#play-action-buttons {
   margin: 0;
   padding: 0;
@@ -13,6 +17,14 @@ ul#play-action-buttons {
 ul#play-action-buttons li {
   display: inline-block;
   padding-right: .25em;
+}
+
+div[play-action] {
+  border: 1px solid black;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+  width: 250px;
 }
 
 #overlay {

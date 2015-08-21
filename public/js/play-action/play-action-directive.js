@@ -3,7 +3,8 @@ angular.module('play-action')
   return {
     allow: 'AE',
     scope: {
-      leagues: '='
+      atBat: '=',
+      playId: '='
     },
     templateUrl: TemplateUtil.url('play-action/play-action.tmpl.html'),
     controller: function($scope) {

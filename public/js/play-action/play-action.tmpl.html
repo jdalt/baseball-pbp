@@ -1,1 +1,9 @@
-<h1>Smoke Test</h1>
+<div>Play Id: {{ playId }}</div>
+<div ng-repeat="playAction in atBat.playActions">
+  <h4>{{ playAction.action.name }}</h4>
+  <div>Outs: {{ playAction.outsEnd }}
+  <div>Runs: {{ playAction.runsEnd - playAction.runsStart }}
+  <div ng-repeat="runner in playAction.runners">
+    {{ runner.player.name }}: {{ "BASE_" + runner.start | translate }} to {{ "BASE_" + runner.end | translate }}
+  </div>
+</div>
