@@ -1,41 +1,6 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, playActions, BaseAdvancer, AdvanceRunnersModal) {
+.controller('GameCtrl', function($scope, _, playActions, BaseAdvancer, AdvanceRunnersModal, GameSettings) {
   var vm = this
-
-  vm.awayTeam = {
-    name: 'Leland Giants',
-    pitcher: { id: 1001, name: "Jimmy"},
-    runs: 0,
-    batterIndex: 0,
-    lineup: [
-      { id: 1001, name: "Fig", position: 'DH'},
-      { id: 1002, name: "Ralph", position: 'C'},
-      { id: 1003, name: "Groucho", position: '1B'},
-      { id: 1004, name: "Deadpan", position: '2B'},
-      { id: 1005, name: "Rando", position: '3B'},
-      { id: 1006, name: "Sam", position: 'SS'},
-      { id: 1007, name: "Froto", position: 'LF'},
-      { id: 1008, name: "Lila", position: 'CF'},
-      { id: 1009, name: "Peach", position: 'RF'}
-    ]
-  }
-  vm.homeTeam = {
-    name: 'White Elepants',
-    pitcher: { id: 2001, name: "Suza"},
-    runs: 0,
-    batterIndex: 0,
-    lineup: [
-      { id: 2001, name: "Landon", position: 'DH'},
-      { id: 2002, name: "Garbonzo", position: 'C'},
-      { id: 2003, name: "Goose", position: '1B'},
-      { id: 2004, name: "Maverick", position: '2B'},
-      { id: 2005, name: "Ice Man", position: '3B'},
-      { id: 2006, name: "Vulcan", position: 'SS'},
-      { id: 2007, name: "Fox", position: 'LF'},
-      { id: 2008, name: "Toadstool", position: 'CF'},
-      { id: 2009, name: "Bowser", position: 'RF'}
-    ]
-  }
 
   vm.completedAtBats = []
   vm.playActions = playActions // Play Action Descriptors...need better name?
@@ -84,11 +49,11 @@ angular.module('game')
     var teamBatting, teamPitching
 
     if(isTop) {
-      teamBatting = vm.awayTeam
-      teamPitching = vm.homeTeam
+      teamBatting = GameSettings.awayTeam
+      teamPitching = GameSettings.homeTeam
     } else {
-      teamBatting = vm.homeTeam
-      teamPitching = vm.awayTeam
+      teamBatting = GameSettings.homeTeam
+      teamPitching = GameSettings.awayTeam
     }
 
     vm.state = {
