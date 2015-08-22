@@ -8,15 +8,15 @@ angular.module('game')
     runs: 0,
     batterIndex: 0,
     lineup: [
-      { id: 1001, order: 1, name: "Fig", position: 'DH'},
-      { id: 1002, order: 2, name: "Ralph", position: 'C'},
-      { id: 1003, order: 3, name: "Groucho", position: '1B'},
-      { id: 1004, order: 4, name: "Deadpan", position: '2B'},
-      { id: 1005, order: 5, name: "Rando", position: '3B'},
-      { id: 1006, order: 6, name: "Sam", position: 'SS'},
-      { id: 1007, order: 7, name: "Froto", position: 'LF'},
-      { id: 1008, order: 8, name: "Lila", position: 'CF'},
-      { id: 1009, order: 9, name: "Peach", position: 'RF'}
+      { id: 1001, name: "Fig", position: 'DH'},
+      { id: 1002, name: "Ralph", position: 'C'},
+      { id: 1003, name: "Groucho", position: '1B'},
+      { id: 1004, name: "Deadpan", position: '2B'},
+      { id: 1005, name: "Rando", position: '3B'},
+      { id: 1006, name: "Sam", position: 'SS'},
+      { id: 1007, name: "Froto", position: 'LF'},
+      { id: 1008, name: "Lila", position: 'CF'},
+      { id: 1009, name: "Peach", position: 'RF'}
     ]
   }
   vm.homeTeam = {
@@ -25,15 +25,15 @@ angular.module('game')
     runs: 0,
     batterIndex: 0,
     lineup: [
-      { id: 2001, order: 1, name: "Landon", position: 'DH'},
-      { id: 2002, order: 2, name: "Garbonzo", position: 'C'},
-      { id: 2003, order: 3, name: "Goose", position: '1B'},
-      { id: 2004, order: 4, name: "Maverick", position: '2B'},
-      { id: 2005, order: 5, name: "Ice Man", position: '3B'},
-      { id: 2006, order: 6, name: "Vulcan", position: 'SS'},
-      { id: 2007, order: 7, name: "Fox", position: 'LF'},
-      { id: 2008, order: 8, name: "Toadstool", position: 'CF'},
-      { id: 2009, order: 9, name: "Bowser", position: 'RF'}
+      { id: 2001, name: "Landon", position: 'DH'},
+      { id: 2002, name: "Garbonzo", position: 'C'},
+      { id: 2003, name: "Goose", position: '1B'},
+      { id: 2004, name: "Maverick", position: '2B'},
+      { id: 2005, name: "Ice Man", position: '3B'},
+      { id: 2006, name: "Vulcan", position: 'SS'},
+      { id: 2007, name: "Fox", position: 'LF'},
+      { id: 2008, name: "Toadstool", position: 'CF'},
+      { id: 2009, name: "Bowser", position: 'RF'}
     ]
   }
 
