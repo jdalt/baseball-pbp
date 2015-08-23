@@ -1,4 +1,4 @@
-angular.module('play-action')
+angular.module('play')
 .filter('possiblePlayAction', function(GameState) {
   return function(allPlayActions) {
     var numRunners = GameState.runners().length
