@@ -4,12 +4,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     includeSource: {
       options: {
-        basePath: "public",
-      },
-      templates: {
-        html: {
-          js: '<script src="{filePath}"></script>'
-        }
+        basePath: "public"
       },
       target: {
         files: {
