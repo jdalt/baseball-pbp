@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, AdvanceRunnersModal, GameState) {
+.controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, ChooseBaseModal, GameState) {
   var vm = this
 
   vm.completedAtBats = []
@@ -25,7 +25,7 @@ angular.module('game')
     if(autoAdvance) {
       GameState.update(runners, action)
     } else {
-      AdvanceRunnersModal.showModal(runners, action)
+      ChooseBaseModal.showModal(runners, action)
       .then(function(modal) {
         modal.close.then(function(runners) {
           if(!runners) return;

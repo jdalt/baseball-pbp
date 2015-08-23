@@ -1,5 +1,5 @@
 angular.module('runner')
-.controller('AdvanceRunnersCtrl', function(close, runners, action, _) {
+.controller('ChooseBaseCtrl', function(close, runners, action, _) {
 
   var vm = this
   vm.action = action

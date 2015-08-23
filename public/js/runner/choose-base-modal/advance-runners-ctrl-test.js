@@ -1,11 +1,11 @@
-describe('AdvanceRunnersCtrl', function() {
+describe('ChooseBaseCtrl', function() {
 
   var scope, elem, ctrl
 
   function buildController(action) {
     inject(function() {
       scope = $rootScope.$new()
-      ctrl = $controller('AdvanceRunnersCtrl', { $scope: scope, close: {}, action: action, runners: {} });
+      ctrl = $controller('ChooseBaseCtrl', { $scope: scope, close: {}, action: action, runners: {} });
     })
     scope.$digest()
   }
