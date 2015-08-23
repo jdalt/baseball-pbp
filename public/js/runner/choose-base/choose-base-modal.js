@@ -3,7 +3,7 @@ angular.module('runner')
 
   function createSettings(runners, action) {
     return {
-      templateUrl: 'js/runner/choose-base-modal/choose-base.tmpl.html',
+      templateUrl: 'js/runner/choose-base/choose-base.tmpl.html',
       controller: 'ChooseBaseCtrl',
       controllerAs: 'advModal',
       inputs: {
