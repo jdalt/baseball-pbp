@@ -113,6 +113,7 @@ angular.module('game')
   function pitcher() { return this._state.pitcher }
   function teamBatting() { return this._state.teamBatting }
   function isInningTop() { return this._state.isInningTop }
+  function inning() { return this._state.inning }
   function completedAtBats() { return this._state.completedAtBats }
 
   return {
@@ -122,9 +123,10 @@ angular.module('game')
     batter: batter,
     pitcher: pitcher,
     teamBatting: teamBatting,
-    completedAtBats: completedAtBats,
     update: update,
     isInningTop: isInningTop,
+    inning: inning,
+    completedAtBats: completedAtBats,
     nextInning: nextInning,
     setInning: setInning
   }

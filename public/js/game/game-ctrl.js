@@ -38,5 +38,17 @@ angular.module('game')
   vm.state = GameState
   vm.nextInning = function() { GameState.nextInning() }
 
+  $scope.$watch(function watchGameState() {
+    return GameState._state.batter // sync at batter change
+  }, function syncGameState() {
+    vm.outs = GameState.outs()
+    vm.runs = GameState.teamBatting().runs
+    vm.isInningTop = GameState.isInningTop()
+    vm.inning = GameState.inning()
+    vm.pitcher = GameState.pitcher()
+    vm.batter = GameState.batter()
+    vm.completedAtBats = GameStat.compeltedAtBats()
+  })
+
   GameState.setInning(1,true)
 })
