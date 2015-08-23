@@ -1,5 +1,3 @@
-angular.module('util', []);
-
 (function() {
 angular.module('util')
   .factory('_', function($window) {
