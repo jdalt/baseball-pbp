@@ -9,28 +9,29 @@
   </head>
   <body>
     <div id="game" ng-controller="GameCtrl as game">
-      <div>Runs: {{ game.state.teamBatting.runs }}</div>
-      <div>Outs: {{ game.state.outs }}</div>
-      <div>Inning: {{ game.state.isInningTop ? 'T' : 'B' }}{{ game.state.inning }}</div>
-      <div>Pitcher: {{ game.state.pitcher.name }}</div>
-      <div>Batter: {{ game.state.batter.name }}</div>
+      <div>Runs: {{ game.state.teamBatting().runs }}</div>
+      <div>Outs: {{ game.state.outs() }}</div>
+      <div>Inning: {{ game.state.isInningTop() ? 'T' : 'B' }}{{ game.state.inning }}</div>
+      <div>Pitcher: {{ game.state.pitcher().name }}</div>
+      <div>Batter: {{ game.state.batter().name }}</div>
       <div>1st Base: {{ game.base(1).player.name }}</div>
       <div>2nd Base: {{ game.base(2).player.name }}</div>
       <div>3rd Base: {{ game.base(3).player.name }}</div>
 
       <ul id="play-action-buttons">
-        <li ng-show="game.state.outs < 3" ng-repeat="action in game.playActions | possiblePlayAction:game.state">
+        <li ng-show="game.state.outs() < 3" ng-repeat="action in game.playActions | possiblePlayAction">
           <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
         </li>
         <li>
-          <button ng-show="game.state.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
+          <button ng-show="game.state.outs() >= 3" ng-click="game.nextInning()">Next Inning</button>
         </li>
       </ul>
 
       <div play-action
         at-bat="atBat" play-id="$index"
-        ng-repeat="atBat in game.completedAtBats">
+        ng-repeat="atBat in game.state.completedAtBats()">
       </div>
+      <h6>Game State: {{game.state._state | json }}</h6>
     </div>
 
     <!-- Vendor -->
@@ -53,6 +54,7 @@
     <script src="/js/base-advancer/base-advancer.js"></script>
     <script src="/js/game/game-ctrl.js"></script>
     <script src="/js/game/game-settings.js"></script>
+    <script src="/js/game/game-state.js"></script>
     <script src="/js/locales.js"></script>
     <script src="/js/models/models.js"></script>
     <script src="/js/play-action/play-action-directive.js"></script>
