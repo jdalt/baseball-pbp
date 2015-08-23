@@ -1,7 +1,5 @@
 describe('RunnerAdvancerFactory', function() {
-  var PA
-  var RA
-
+  var PA, RA
 
   beforeEach(function() {
     inject(function(playActions, RunnerAdvancer) {
@@ -96,7 +94,7 @@ var allRunners = [
 ]
 
 function createPlayRunners(basesArray) {
-  basesArray.unshift(0) // make the batter yourself
+  basesArray.unshift(0) // moar DRY: make batter here in the helper
   return _.map(basesArray, function(baseIndex) {
     return allRunners[baseIndex]
   })
