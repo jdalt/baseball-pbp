@@ -1,1 +1,1 @@
-angular.module('runner', [])
+angular.module('runner', ['util', 'angularModalService'])

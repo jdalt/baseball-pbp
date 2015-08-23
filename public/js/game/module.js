@@ -1,1 +1,1 @@
-angular.module('game', ['util', 'models','advance-runners', 'runner', 'play'])
+angular.module('game', ['util', 'models', 'runner', 'play'])
