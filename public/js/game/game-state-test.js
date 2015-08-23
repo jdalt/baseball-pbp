@@ -21,4 +21,8 @@ describe('GameStateFactory', function() {
       expect(State.completedAtBats().length).toBe(0)
     })
   })
+
+  xdescribe('#setInning to mid game inning')
+  xdescribe('#update')
+  xdescribe('#nextInning')
 })
