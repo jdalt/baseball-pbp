@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, playActions, BaseAdvancer, AdvanceRunnersModal, GameState) {
+.controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, AdvanceRunnersModal, GameState) {
   var vm = this
 
   vm.completedAtBats = []
@@ -20,7 +20,7 @@ angular.module('game')
   }
 
   vm.createPlayAction = function(action) {
-    var runners = BaseAdvancer.process(vm.playRunners(), action)
+    var runners = RunnerAdvancer.process(vm.playRunners(), action)
     var autoAdvance = _.every(runners, function(r) { return !r.modifiable })
     if(autoAdvance) {
       GameState.update(runners, action)

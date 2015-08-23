@@ -1,5 +1,5 @@
-angular.module('base-advancer')
-.factory('BaseAdvancer', function(_) {
+angular.module('runner')
+.factory('RunnerAdvancer', function(_) {
 
   function process(runners, action) {
     var usedRunnerOuts = runnersOut()

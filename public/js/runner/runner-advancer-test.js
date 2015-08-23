@@ -1,12 +1,12 @@
-describe('BaseAdvancerFactory', function() {
+describe('RunnerAdvancerFactory', function() {
   var PA
-  var BA
+  var RA
 
 
   beforeEach(function() {
-    inject(function(playActions, BaseAdvancer) {
+    inject(function(playActions, RunnerAdvancer) {
       PA = playActions
-      BA = BaseAdvancer
+      RA = RunnerAdvancer
     })
   })
 
@@ -17,7 +17,7 @@ describe('BaseAdvancerFactory', function() {
   describe('HR', function() {
     it('should score all runners', function() {
       var action = getAction('HR')
-      var runners = BA.process(runnerOnFirst, action)
+      var runners = RA.process(runnerOnFirst, action)
 
       expectDefaultEnd(runners, [4,4])
       expectModifiable(runners, [false,false])
@@ -29,7 +29,7 @@ describe('BaseAdvancerFactory', function() {
     describe('with a runner on first', function() {
       it('should auto advance batter and auto 1st Base Runner out', function() {
         var action = getAction('FC')
-        var runners = BA.process(runnerOnFirst, action)
+        var runners = RA.process(runnerOnFirst, action)
 
         expectDefaultEnd(runners, [1,-1])
         expectModifiable(runners, [false,false])
@@ -42,7 +42,7 @@ describe('BaseAdvancerFactory', function() {
     describe('with runners on first and second', function() {
       it('should auto advance batter and allow 1st Base Runner and 2nd Base Runner for UI', function() {
         var action = getAction('FC')
-        var runners = BA.process(runnersOnFirstAndSecond, action)
+        var runners = RA.process(runnersOnFirstAndSecond, action)
 
         console.log('runner', runners[1].possibleBases)
         expectDefaultEnd(runners, [1,-1,2])
