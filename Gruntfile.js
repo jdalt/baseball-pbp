@@ -5,7 +5,6 @@ module.exports = function(grunt) {
     includeSource: {
       options: {
         basePath: "public",
-        baseUrl: "/"
       },
       templates: {
         html: {
