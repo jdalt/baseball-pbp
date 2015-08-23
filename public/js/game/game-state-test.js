@@ -9,7 +9,7 @@ describe('GameStateFactory', function() {
     })
   })
 
-  describe('initialized to Top of 1st', function() {
+  describe('#setInning to Top of 1st', function() {
     it('should have proper 0 state (no outs, no runs)', function() {
       State.setInning(1,true)
 
