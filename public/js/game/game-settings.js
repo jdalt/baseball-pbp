@@ -1,6 +1,5 @@
 angular.module('game')
 .factory('GameSettings', function() {
-  console.log('initialize GameSettings')
 
   var awayTeam = {
     name: 'Leland Giants',

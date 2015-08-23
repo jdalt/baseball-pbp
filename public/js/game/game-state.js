@@ -1,6 +1,5 @@
 angular.module('game')
 .factory('GameState', function(GameSettings) {
-  console.log('initialize (hopefully just 1)')
 
   var _state = {
     completedAtBats: []
