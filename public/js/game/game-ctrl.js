@@ -47,7 +47,7 @@ angular.module('game')
     vm.inning = GameState.inning()
     vm.pitcher = GameState.pitcher()
     vm.batter = GameState.batter()
-    vm.completedAtBats = GameStat.compeltedAtBats()
+    vm.completedAtBats = GameState.completedAtBats()
   })
 
   GameState.setInning(1,true)

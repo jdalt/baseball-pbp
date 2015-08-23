@@ -28,8 +28,8 @@
       </ul>
 
       <div play-action
-        at-bat="atBat" play-id="$index"
-        ng-repeat="atBat in game.completedAtBats()">
+          at-bat="atBat" play-id="$index"
+          ng-repeat="atBat in game.completedAtBats">
       </div>
       <h6>Game State: {{game.state._state | json }}</h6>
     </div>
