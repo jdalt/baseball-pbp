@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="baseball-pbp">
+  <head>
+    <title>Baseball Play-by-Play</title>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="game" ng-controller="GameCtrl as game">
+      <div>Runs: {{ game.runs }}</div>
+      <div>Outs: {{ game.outs }}</div>
+      <div>Inning: {{ game.isInningTop ? 'Top' : 'Bottom' }} {{ game.inning }}</div>
+      <div>Pitcher: {{ game.pitcher.name }}</div>
+      <div>Batter: {{ game.batter.name }}</div>
+      <div>1st Base: {{ game.base(1).player.name }}</div>
+      <div>2nd Base: {{ game.base(2).player.name }}</div>
+      <div>3rd Base: {{ game.base(3).player.name }}</div>
+
+      <ul id="play-action-buttons">
+        <li ng-show="game.outs < 3" ng-repeat="action in game.playActions | possiblePlayAction">
+          <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
+        </li>
+        <li>
+          <button ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
+        </li>
+      </ul>
+
+      <div at-bat="atBat" play-id="$index"
+        ng-repeat="atBat in game.completedAtBats">
+      </div>
+      <h6>Game State: {{game.state._state | json }}</h6>
+    </div>
+
+    <!-- Vendor -->
+    <script src="/lib/angular/angular.js"></script>
+    <!-- include: "type": "js", "basePath": "public", "files": "lib/**/!(angular.js).js" -->
+
+    <!-- Modules -->
+    <!-- include: "type": "js", "basePath": "public", "files": "js/**/module.js" -->
+
+    <!-- App -->
+    <script src="/js/app.js"></script>
+
+    <!-- Components -->
+    <!-- include: "type": "js", "basePath": "public", "baseUrl": "/", "files": "js/**/!(module.js|*-test.js|app.js).js" -->
+  </body>
+</html>
+
