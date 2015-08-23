@@ -18,8 +18,8 @@ module.exports = function(config) {
       '../../test/karma.start.js',
       '../../test/*.js',
 
-      '**/module.js/',
-      'app.js/',
+      '**/module.js',
+      'app.js',
 
       '**/!(*-test).js',
       '**/*.html',
