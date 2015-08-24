@@ -1,4 +1,4 @@
-angular.module('game')
+angular.module('game-state')
 .factory('GameState', function(GameSettings) {
 
   var _state = {

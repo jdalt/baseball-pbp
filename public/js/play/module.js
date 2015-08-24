@@ -1,1 +1,1 @@
-angular.module('play', ['util'])
+angular.module('play', ['util', 'game-state'])

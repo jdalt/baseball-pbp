@@ -1,4 +1,4 @@
-describe('GameStateFactory', function() {
+describe('GameState Factory', function() {
   var State
   var Settings
 
