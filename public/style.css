@@ -25,6 +25,36 @@ div[at-bat] {
   width: 250px;
 }
 
+div[team].home-team { float: left; }
+div[team].away-team { float: right; }
+
+div[team] li.batting {
+  font-weight: bold;
+}
+
+div[team] ul {
+  opacity: 0.4;
+}
+
+div[team] ul.team-batting {
+  opacity: 1.0;
+}
+
+div[team] ul {
+  padding: 0;
+  margin: 0 0 1em 0;
+}
+
+div[team] li {
+  margin: 0;
+  list-style: none;
+}
+
+div[team] h3 {
+  margin: 0;
+  padding: 0;
+}
+
 #overlay {
   position: fixed;
   left: 0;
