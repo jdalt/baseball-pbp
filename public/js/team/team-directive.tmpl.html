@@ -1,6 +1,7 @@
-<span>Smoke</span>
-<ul>
-  <li ng-repeat="hitter in team.lineup">
-    {{$index + 1}}. {{hitter.name}}
+<h3>{{ team.name }}</h3>
+<ul ng-class="{ 'team-batting': isBatting }">
+  <li ng-repeat="hitter in team.lineup"
+    ng-class= "{ batting: ($index == team.batterIndex) }">
+    {{ $index + 1 }}. {{ hitter.name }} ({{ hitter.position }})
   </li>
 </ul>

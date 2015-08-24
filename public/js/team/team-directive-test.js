@@ -6,13 +6,13 @@ describe('team Directive', function() {
   }))
 
   function compile() {
-    var tmpl = "<div team=''></div>"
+    var tmpl = "<div team home-away='away'></div>"
     elem = $compile(tmpl)(scope)
     scope.$digest()
   }
 
   it('should compile', function() {
     compile()
-    expect(elem.text()).toContain("Smoke")
+    expect(elem.text()).toContain("Leland Giants")
   })
 })

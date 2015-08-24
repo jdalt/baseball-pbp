@@ -1,5 +1,5 @@
 angular.module('game')
-.controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, ChooseBaseModal, GameState) {
+.controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, ChooseBaseModal, GameState, GameSettings) {
   var vm = this
 
   vm.completedAtBats = []
@@ -35,6 +35,8 @@ angular.module('game')
     }
   }
 
+  vm.homeTeam = GameSettings.homeTeam
+  vm.awayTeam = GameSettings.awayTeam
   vm.state = GameState
   vm.nextInning = function() { GameState.nextInning() }
 

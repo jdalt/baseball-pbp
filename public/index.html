@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+
     <div id="game" ng-controller="GameCtrl as game">
+      <div class="home-team" team home-away="home"></div>
+      <div class="away-team" team home-away="away"></div>
+
       <div>Runs: {{ game.runs }}</div>
       <div>Outs: {{ game.outs }}</div>
       <div>Inning: {{ game.isInningTop ? 'Top' : 'Bottom' }} {{ game.inning }}</div>
@@ -45,6 +49,7 @@
     <script src="js/module.js"></script>
     <script src="js/play/module.js"></script>
     <script src="js/runner/module.js"></script>
+    <script src="js/team/module.js"></script>
     <script src="js/util/module.js"></script>
 
     <!-- Components -->
@@ -58,6 +63,8 @@
     <script src="js/runner/choose-base/choose-base-ctrl.js"></script>
     <script src="js/runner/choose-base/choose-base-modal.js"></script>
     <script src="js/runner/runner-advancer.js"></script>
+    <script src="js/team/team-directive.js"></script>
+    <script src="js/team/teams.js"></script>
     <script src="js/util/util.js"></script>
   </body>
 </html>

@@ -1,1 +1,1 @@
-angular.module('team', ['util'])
+angular.module('team', ['util', 'game-state'])
