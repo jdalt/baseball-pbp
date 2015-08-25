@@ -25,6 +25,35 @@ div[at-bat] {
   width: 250px;
 }
 
+div[baseball-diamond] {
+  width: 771px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div[baseball-diamond] .base {
+  fill: #000;
+  fill-opacity: 1;
+  stroke: none;
+}
+
+div[baseball-diamond] #inner-diamond {
+  fill: none;
+  stroke: #777;
+  stroke-width: 25;
+}
+
+div[baseball-diamond] #field-boundary {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 1;
+}
+
+div[baseball-diamond] .defense-positions {
+  font-size: 40px;
+  font-family: "Courier"
+}
+
 div[team].home-team { float: left; }
 div[team].away-team { float: right; }
 

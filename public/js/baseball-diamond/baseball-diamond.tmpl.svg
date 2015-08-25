@@ -1,0 +1,122 @@
+<svg
+   width="770"
+   height="680"
+   id="baseball-diamond-svg">
+  <g
+     transform="translate(6276.625,-304.21875)"
+     id="layer1">
+    <path
+       d="m -5890.8655,314.25608 c -178.6283,0 -329.2447,119.935 -375.7118,283.67171 l 375.7097,375.70981 375.7099,-375.71176 c -46.468,-163.73553 -197.0805,-283.66976 -375.7078,-283.66976 z"
+       id="field-boundary" />
+    <g
+       transform="matrix(0.06249007,0,0,0.06249007,-5921.3025,913.7816)">
+      <g
+         id="g3871">
+        <rect
+           width="2743.5742"
+           height="2743.5742"
+           x="-1721.6569"
+           y="-2410.2729"
+           transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+           id="inner-diamond" />
+      </g>
+      <path
+         d="m 372.23354,705.17004 0,137.51872 -0.0544,0.0544 114.68416,114.67326 114.68416,-114.67326 c 0,-45.85772 0,-91.71542 0,-137.57313 z"
+         class="base"
+         id="home-plate"
+         />
+      <rect
+         width="230.51682"
+         height="230.51682"
+         x="791.69397"
+         y="-2408.3289"
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         class="base"
+         id="first-base"
+         />
+      <rect
+         width="230.51682"
+         height="230.51682"
+         x="-1721.2594"
+         y="-2410.0325"
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         class="base"
+         id="second-base"
+         />
+      <rect
+         width="230.51682"
+         height="230.51682"
+         x="-1721.8071"
+         y="104.41994"
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         class="base"
+         id="third-base"
+         />
+    </g>
+
+    <text
+       x="-5700.0625"
+       y="588.83063"
+       class="defense-positions"
+       id="defense-9">
+       <tspan>9</tspan></text>
+
+    <text
+       x="-5904.75"
+       y="490"
+       class="defense-positions"
+       id="defense-8">
+       <tspan>8</tspan></text>
+
+
+    <text
+       x="-6115.6875"
+       y="588.83063"
+       class="defense-positions"
+       id="defense-7">
+       <tspan>7</tspan></text>
+
+    <text
+       x="-5957.3525"
+       y="745.62268"
+       class="defense-positions"
+       id="defense-6">
+       <tspan>6</tspan></text>
+
+    <text
+       x="-6024.9512"
+       y="839.54803"
+       class="defense-positions"
+       id="defense-5">
+       <tspan>5</tspan></text>
+
+    <text
+       x="-5851.167"
+       y="745.64221"
+       class="defense-positions"
+       id="defense-4">
+       <tspan>4</tspan></text>
+
+    <text
+       x="-5780.603"
+       y="839.81171"
+       class="defense-positions"
+       id="defense-3">
+       <tspan>3</tspan></text>
+
+    <text
+       x="-5903.4209"
+       y="956.19043"
+       class="defense-positions"
+       id="defense-2">
+       <tspan>2</tspan></text>
+
+    <text
+       x="-5904.3096"
+       y="874.62811"
+       class="defense-positions"
+       id="defense-1">
+       <tspan>1</tspan></text>
+
+  </g>
+</svg>

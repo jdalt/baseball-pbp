@@ -13,6 +13,8 @@
       <div class="home-team" team home-away="home"></div>
       <div class="away-team" team home-away="away"></div>
 
+      <div baseball-diamond></div>
+
       <div>Runs: {{ game.runs }}</div>
       <div>Outs: {{ game.outs }}</div>
       <div>Inning: {{ game.isInningTop ? 'Top' : 'Bottom' }} {{ game.inning }}</div>
@@ -44,6 +46,7 @@
     <script src="lib/lodash/lodash.js"></script>
 
     <!-- Modules -->
+    <script src="js/baseball-diamond/module.js"></script>
     <script src="js/game-state/module.js"></script>
     <script src="js/game/module.js"></script>
     <script src="js/module.js"></script>
@@ -53,6 +56,7 @@
     <script src="js/util/module.js"></script>
 
     <!-- Components -->
+    <script src="js/baseball-diamond/baseball-diamond-directive.js"></script>
     <script src="js/game-state/game-state.js"></script>
     <script src="js/game/game-ctrl.js"></script>
     <script src="js/game/game-settings.js"></script>
