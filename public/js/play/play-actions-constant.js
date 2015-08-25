@@ -39,28 +39,28 @@ angular.module('play')
         optimistic: false
       },
     },
-    { abbrev: '1B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Single', advance:
+    { abbrev: '1B', outs: 0, atBatOnly: true, requiredRunners: 0, isHit: true, name: 'Single', advance:
       { batter: 1,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
     },
-    { abbrev: '2B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Double', advance:
+    { abbrev: '2B', outs: 0, atBatOnly: true, requiredRunners: 0, isHit: true, name: 'Double', advance:
       { batter: 2,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
     },
-    { abbrev: '3B', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Triple', advance:
+    { abbrev: '3B', outs: 0, atBatOnly: true, requiredRunners: 0, isHit: true, name: 'Triple', advance:
       { batter: 3,
         batterModifiable: false,
         runnersModifiable: true,
         optimistic: true
       },
     },
-    { abbrev: 'HR', outs: 0, atBatOnly: true, requiredRunners: 0, name: 'Home Run', advance:
+    { abbrev: 'HR', outs: 0, atBatOnly: true, requiredRunners: 0, isHit: true, name: 'Home Run', advance:
       { batter: 4,
         batterModifiable: false,
         runnersModifiable: false,
@@ -109,7 +109,7 @@ angular.module('play')
         optimistic: false
       },
     },
-    { abbrev: 'E', outs: 0, atBatOnly: false, requiredRunners: 0, name: 'Error', advance:
+    { abbrev: 'E', outs: 0, atBatOnly: false, requiredRunners: 0, isError: true, name: 'Error', advance:
       { batter: 0,
         batterModifiable: true,
         runnersModifiable: true,

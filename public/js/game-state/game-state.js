@@ -44,7 +44,7 @@ angular.module('game-state')
     this._state.currentAtBat.playActions.push(newPlayAction)
 
     this._state.outs += outs
-    this._state.teamBatting.runs += runs
+    updateTeamStats(this._state, runs, action)
 
     this._state.runners = _.chain(runners)
       .select(function(runner) { return (0 < runner.end) && (runner.end < 4) })
@@ -52,6 +52,12 @@ angular.module('game-state')
       .value()
 
     if(atBatFinished(runners, this._state.batter)) nextAtBat(this._state)
+  }
+
+  function updateTeamStats(state, runs, playAction) {
+    state.teamBatting.runs += runs
+    if(playAction.isHit) state.teamBatting.hits += 1
+    if(playAction.isError) state.teamPitching.errors += 1
   }
 
   function atBatFinished(runners, batter) {

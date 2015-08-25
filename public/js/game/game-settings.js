@@ -13,6 +13,8 @@ angular.module('game')
     name: 'Leland Giants',
     pitcher: { id: 1001, name: "Jimmy"},
     runs: 0,
+    errors: 0,
+    hits: 0,
     batterIndex: 0,
     lineup: [
       { id: 1001, name: "Fig", position: 'DH'},
@@ -31,6 +33,8 @@ angular.module('game')
     name: 'White Elepants',
     pitcher: { id: 2001, name: "Suza"},
     runs: 0,
+    errors: 0,
+    hits: 0,
     batterIndex: 0,
     lineup: [
       { id: 2001, name: "Landon", position: 'DH'},
