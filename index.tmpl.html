@@ -10,8 +10,8 @@
   <body>
 
     <div id="game" ng-controller="GameCtrl as game">
-      <div class="home-team" team home-away="home"></div>
-      <div class="away-team" team home-away="away"></div>
+      <div class="home-team" team home-team="game.homeTeam"></div>
+      <div class="away-team" team away-team="game.awayTeam"></div>
 
       <div scoreboard innings="game.innings" away-team="game.awayTeam" home-team="game.homeTeam"></div>
       <div baseball-diamond></div>

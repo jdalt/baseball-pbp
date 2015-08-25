@@ -3,15 +3,14 @@ angular.module('team')
   return {
     allow: 'AE',
     scope: {
-      homeAway: '@'
+      homeTeam: '=',
+      awayTeam: '='
     },
     templateUrl: TemplateUtil.url('team/team-directive.tmpl.html'),
-    controller: function($scope, Teams, GameState) {
-      if($scope.homeAway == 'home') {
-        $scope.team = Teams.homeTeam
-      } else {
-        $scope.team = Teams.awayTeam
-      }
+    controller: function($scope, GameState) {
+      if($scope.homeTeam) $scope.homeAway = 'home'
+      if($scope.awayTeam) $scope.homeAway = 'away'
+      $scope.team = $scope.homeTeam || $scope.awayTeam
 
       $scope.$watch( function watchTeamBatting() {
         return GameState.teamBatting()
