@@ -37,7 +37,8 @@ angular.module('game')
 
   vm.homeTeam = GameSettings.homeTeam
   vm.awayTeam = GameSettings.awayTeam
-  vm.state = GameState
+  vm.innings = GameSettings.innings
+  vm.state = GameState // needed?
   vm.nextInning = function() { GameState.nextInning() }
 
   $scope.$watch(function watchGameState() {

@@ -54,6 +54,23 @@ div[baseball-diamond] .defense-positions {
   font-family: "Courier"
 }
 
+div[scoreboard] table {
+  border-collapse: collapse;
+  font-size: 25px;
+  margin: 1em auto;
+}
+
+div[scoreboard] td, div[scoreboard] th {
+  margin: 0;
+  min-width: 1em;
+  padding: .25em .5em;
+  text-align: center;
+}
+
+div[scoreboard] td.inning-score, div[scoreboard] th.inning-score {
+  border: 1px solid black;
+}
+
 div[team].home-team { float: left; }
 div[team].away-team { float: right; }
 

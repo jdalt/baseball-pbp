@@ -1,0 +1,36 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th ng-repeat="inning in innings">
+        {{ inning.number }}
+      </th>
+      <th></th>
+      <th>R</th>
+      <th>H</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ awayTeam.name }}</td>
+      <td ng-repeat="inning in innings" class="inning-score">
+        {{ inning.awayRuns }}
+      </td>
+      <td></td>
+      <td class="inning-score">{{ awayTeam.runs }}</td>
+      <td class="inning-score">{{ awayTeam.hits }}</td>
+      <td class="inning-score">{{ awayTeam.errors }}</td>
+    </tr>
+    <tr>
+      <td>{{ homeTeam.name }}</td>
+      <td ng-repeat="inning in innings" class="inning-score">
+        {{ inning.homeRuns }}
+      </td>
+      <td></td>
+      <td class="inning-score">{{ homeTeam.runs }}</td>
+      <td class="inning-score">{{ homeTeam.hits }}</td>
+      <td class="inning-score">{{ homeTeam.errors }}</td>
+    </tr>
+  </tbody>
+</table>
