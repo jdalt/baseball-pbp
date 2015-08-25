@@ -2,6 +2,9 @@
 <ul ng-class="{ 'team-batting': isBatting }">
   <li ng-repeat="hitter in team.lineup"
     ng-class= "{ batting: ($index == team.batterIndex) }">
+    <span class="at-bat-indicator">
+      <img ng-if="$index == team.batterIndex" src="img/bat.svg"/>
+    </span>
     {{ $index + 1 }}. {{ hitter.name }} ({{ hitter.position }})
   </li>
 </ul>

@@ -101,6 +101,11 @@ div[team] h3 {
   padding: 0;
 }
 
+div[team] .at-bat-indicator img, div[team] .at-bat-indicator {
+  width: 15px;
+  display: inline-block;
+}
+
 #overlay {
   position: fixed;
   left: 0;
