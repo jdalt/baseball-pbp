@@ -115,6 +115,7 @@ angular.module('game-state')
   }
 
   function nextInning() {
+
     if(this._state.isInningTop) {
       this.setInning(this._state.inning, false)
     } else {

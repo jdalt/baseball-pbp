@@ -14,8 +14,8 @@
   <tbody>
     <tr>
       <td>{{ awayTeam.name }}</td>
-      <td ng-repeat="inning in innings" class="inning-score">
-        {{ inning.awayRuns }}
+      <td ng-class="{ 'current-inning': (curInning == inning.top) }" ng-repeat="inning in innings" class="inning-score">
+        {{ inning.top.runs }}
       </td>
       <td></td>
       <td class="inning-score">{{ awayTeam.runs }}</td>
@@ -24,8 +24,8 @@
     </tr>
     <tr>
       <td>{{ homeTeam.name }}</td>
-      <td ng-repeat="inning in innings" class="inning-score">
-        {{ inning.homeRuns }}
+      <td ng-class="{ 'current-inning': (curInning == inning.bottom) }" ng-repeat="inning in innings" class="inning-score">
+        {{ inning.bottom.runs }}
       </td>
       <td></td>
       <td class="inning-score">{{ homeTeam.runs }}</td>

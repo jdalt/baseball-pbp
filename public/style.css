@@ -71,6 +71,11 @@ div[scoreboard] td.inning-score, div[scoreboard] th.inning-score {
   border: 1px solid black;
 }
 
+div[scoreboard] td.current-inning {
+  border: 2px solid black;
+  background-color: #eee;
+}
+
 div[team].home-team { float: left; }
 div[team].away-team { float: right; }
 

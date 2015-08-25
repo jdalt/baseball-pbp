@@ -10,7 +10,7 @@ describe('Scoreboard Directive', function() {
   }))
 
   function compile() {
-    var tmpl = '<div scoreboard home-team="homeTeam" away-team="awayTeam"></div>'
+    var tmpl = '<div scoreboard innings="innings" current-inning="1" home-team="homeTeam" away-team="awayTeam"></div>'
 
     _.defaults(scope, {
       innings: innings,
