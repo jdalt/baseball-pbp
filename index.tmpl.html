@@ -35,11 +35,17 @@
       </ul>
 
       <div ng-repeat="inning in game.innings">
-        <div at-bat="atBat" play-id="$index"
-          ng-repeat="atBat in inning.top.completedAtBats">
+        <div>
+          <h3>{{ $index + 1 }} Top</h3>
+          <div at-bat="atBat" play-id="$index"
+            ng-repeat="atBat in inning.top.completedAtBats">
+          </div>
         </div>
-        <div at-bat="atBat" play-id="$index"
-          ng-repeat="atBat in inning.bottom.completedAtBats">
+        <div>
+          <h3>{{ $index + 1 }} Bottom</h3>
+          <div at-bat="atBat" play-id="$index"
+            ng-repeat="atBat in inning.bottom.completedAtBats">
+          </div>
         </div>
       </div>
       <h6>Game State: {{game.state._state | json }}</h6>
