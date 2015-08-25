@@ -34,8 +34,13 @@
         </li>
       </ul>
 
-      <div at-bat="atBat" play-id="$index"
-        ng-repeat="atBat in game.completedAtBats">
+      <div ng-repeat="inning in game.innings">
+        <div at-bat="atBat" play-id="$index"
+          ng-repeat="atBat in inning.top.completedAtBats">
+        </div>
+        <div at-bat="atBat" play-id="$index"
+          ng-repeat="atBat in inning.bottom.completedAtBats">
+        </div>
       </div>
       <h6>Game State: {{game.state._state | json }}</h6>
     </div>
@@ -71,7 +76,6 @@
     <script src="js/runner/runner-advancer.js"></script>
     <script src="js/scoreboard/scoreboard-directive.js"></script>
     <script src="js/team/team-directive.js"></script>
-    <script src="js/team/teams.js"></script>
     <script src="js/util/util.js"></script>
   </body>
 </html>

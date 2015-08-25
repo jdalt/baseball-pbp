@@ -1,11 +1,9 @@
 angular.module('game-state')
 .factory('GameState', function(GameSettings) {
 
-  var _state = {
-    completedAtBats: []
-  }
+  var _state = {}
 
-  function setInning(inning, isTop) {
+  function setInning(inningNum, isTop) {
     var teamBatting, teamPitching
 
     if(isTop) {
@@ -16,8 +14,18 @@ angular.module('game-state')
       teamPitching = this._state.teamPitching = GameSettings.awayTeam
     }
 
+    var inning = GameSettings.innings[inningNum - 1] // GameState uses 0 indexed array
+    var inningHalf
+    if(isTop) {
+      inningHalf = inning.top
+    } else {
+      inningHalf = inning.bottom
+    }
+    inningHalf.runs = 0
+
     this._state = _.extend(this._state, {
-      inning: inning,
+      inning: inning.number,
+      inningHalf: inningHalf,
       isInningTop: isTop,
       outs: 0,
       batter: teamBatting.lineup[teamBatting.batterIndex],
@@ -53,9 +61,18 @@ angular.module('game-state')
 
   function nextAtBat(state) {
     finalizeCurrentAtBat(state)
-    state.completedAtBats.push(state.currentAtBat)
+    updateInningHalf(state)
     state.currentAtBat = createAtBat(state)
     state.batter = nextBatter(state) // don't advance if the batter is still batting
+  }
+
+  function updateInningHalf(state) {
+    state.inningHalf.completedAtBats.push(state.currentAtBat)
+
+    var runsScored = _.chain(state.currentAtBat.playActions).flatten()
+      .map('runners').flatten()
+      .where({ end: 4}).valueOf().length
+    state.inningHalf.runs += runsScored
   }
 
   function buildPlayAction(outs, runs, runners, action, state) {
@@ -113,7 +130,7 @@ angular.module('game-state')
   function teamBatting() { return this._state.teamBatting }
   function isInningTop() { return this._state.isInningTop }
   function inning() { return this._state.inning }
-  function completedAtBats() { return this._state.completedAtBats }
+  function inningHalf() { return this._state.inningHalf }
 
   return {
     _state: _state,
@@ -125,7 +142,7 @@ angular.module('game-state')
     update: update,
     isInningTop: isInningTop,
     inning: inning,
-    completedAtBats: completedAtBats,
+    inningHalf: inningHalf,
     nextInning: nextInning,
     setInning: setInning
   }

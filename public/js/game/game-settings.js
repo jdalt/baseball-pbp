@@ -2,7 +2,11 @@ angular.module('game')
 .factory('GameSettings', function(_) {
 
   var innings = _.map(_.range(1,10), function(inningNum) {
-    return { number: inningNum }
+    return {
+      number: inningNum,
+      top: { completedAtBats: [] },
+      bottom: { completedAtBats: [] }
+    }
   })
 
   var awayTeam = {

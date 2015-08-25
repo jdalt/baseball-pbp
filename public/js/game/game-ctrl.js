@@ -2,7 +2,6 @@ angular.module('game')
 .controller('GameCtrl', function($scope, _, playActions, RunnerAdvancer, ChooseBaseModal, GameState, GameSettings) {
   var vm = this
 
-  vm.completedAtBats = []
   vm.playActions = playActions // Play Action Descriptors...need better name?
 
   vm.base = function(base) {
@@ -50,7 +49,7 @@ angular.module('game')
     vm.inning = GameState.inning()
     vm.pitcher = GameState.pitcher()
     vm.batter = GameState.batter()
-    vm.completedAtBats = GameState.completedAtBats()
+    vm.inningHalf = GameState.inningHalf()
   })
 
   GameState.setInning(1,true)

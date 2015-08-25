@@ -18,7 +18,7 @@ describe('GameState Factory', function() {
       expect(State.inning()).toBe(1)
       expect(State.pitcher()).toBe(Settings.homeTeam.pitcher)
       expect(State.batter()).toBe(Settings.awayTeam.lineup[0])
-      expect(State.completedAtBats().length).toBe(0)
+      expect(State.inningHalf().runs).toBe(0)
     })
   })
 
