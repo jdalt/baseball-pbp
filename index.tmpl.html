@@ -40,6 +40,10 @@
         </div>
       </div>
 
+      <br><br><br><br>
+      <br><br><br><br>
+      <br><br><br><br>
+
       <ul class="play-action-buttons">
         <li ng-show="game.outs < 3" ng-repeat="action in game.playActions | possiblePlayAction">
           <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
@@ -48,6 +52,8 @@
           <button ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
         </li>
       </ul>
+
+      <br><br><br><br>
 
       <div ng-repeat="inning in game.innings">
         <div>
@@ -63,7 +69,6 @@
           </div>
         </div>
       </div>
-      <h6>Game State: {{game.state._state | json }}</h6>
     </div>
 
     <!-- Vendor -->
