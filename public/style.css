@@ -59,6 +59,16 @@ div[baseball-diamond] #during-atbat {
   bottom: 0;
   right: 0;
 }
+div[baseball-diamond] #outs-runners {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+div[baseball-diamond] #outs-runners .state-label {
+  font-weight: bold;
+}
 
 div[baseball-diamond] #during-atbat li {
   display: inline-block;

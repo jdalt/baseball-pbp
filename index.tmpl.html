@@ -30,6 +30,10 @@
             <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
           </li>
         </ul>
+        <div id="outs-runners">
+          <div>Outs: {{ game.outs }}</div>
+          <div>Runners: {{ game.runners | json }}</div>
+        </div>
         <button id="next-inning" ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
       </div>
 
