@@ -224,7 +224,7 @@ div[team] .active img, div[team] .active {
 
   div[baseball-diamond] .play-action-buttons button {
     font-size: 20px;
-    margin: 8px 3px;
+    margin: 10px 0;
     width: 75px;
     border: 1px solid black;
     background-color: #eee;
@@ -235,15 +235,17 @@ div[team] .active img, div[team] .active {
   }
 
   div.diamond-container {
-    min-width: 450px;
+    min-width: 100%;
   }
 
   div[baseball-diamond] {
-    width: 70%;
+    width: 100%;
   }
 
   div[scoreboard] td, div[scoreboard] th {
-    padding: 0;
+    padding: 0 .125em;
     min-width: .25em;
+    max-width: 75px;
+    font-size: 20px;
   }
 }
