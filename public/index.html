@@ -31,20 +31,15 @@
           </li>
         </ul>
         <div id="outs-runners">
-          <div ng-if="game.runners.length"><span class="state-label">Runners:</span> <span ng-repeat="runner in game.runners">{{ runner.player.name }}{{ $last ? '' : ', '}}</span></div>
+          <div><span class="state-label">1st</span> {{ game.base(1).player.name }}</div>
+          <div><span class="state-label">2nd</span> {{ game.base(2).player.name }}</div>
+          <div><span class="state-label">3rd</span> {{ game.base(3).player.name }}</div>
           <div><span class="state-label">Outs:</span> {{ game.outs }}</div>
         </div>
         <button id="next-inning" ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
       </div>
 
-      <div>Runs: {{ game.runs }}</div>
-      <div>Outs: {{ game.outs }}</div>
-      <div>Inning: {{ game.isInningTop ? 'Top' : 'Bottom' }} {{ game.inning }}</div>
       <div>Pitcher: {{ game.pitcher.name }}</div>
-      <div>Batter: {{ game.batter.name }}</div>
-      <div>1st Base: {{ game.base(1).player.name }}</div>
-      <div>2nd Base: {{ game.base(2).player.name }}</div>
-      <div>3rd Base: {{ game.base(3).player.name }}</div>
 
       <ul class="play-action-buttons">
         <li ng-show="game.outs < 3" ng-repeat="action in game.playActions | possiblePlayAction">
