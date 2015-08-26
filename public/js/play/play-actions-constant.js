@@ -116,7 +116,14 @@ angular.module('play')
         optimistic: true
       },
     },
-    { abbrev: 'St', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Steal', advance:
+    { abbrev: 'SB', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Stolen Base', advance:
+      { batter: 0,
+        batterModifiable: false,
+        runnersModifiable: true,
+        optimistic: false
+      },
+    },
+    { abbrev: 'CS', outs: 1, atBatOnly: false, requiredRunners: 1, name: 'Caught Stealing', advance:
       { batter: 0,
         batterModifiable: false,
         runnersModifiable: true,
@@ -137,6 +144,20 @@ angular.module('play')
         optimistic: false
       },
     },
+    { abbrev: 'PB', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Passed Ball', advance:
+      { batter: 0,
+        batterModifiable: false,
+        runnersModifiable: true,
+        optimistic: false
+      },
+    },
+    { abbrev: 'WP', outs: 0, atBatOnly: false, requiredRunners: 1, name: 'Wild Pitch', advance:
+      { batter: 0,
+        batterModifiable: false,
+        runnersModifiable: true,
+        optimistic: false
+      },
+    }
   ]
 )
 
