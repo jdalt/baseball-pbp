@@ -1,6 +1,6 @@
+<div class="field-overlay" ng-transclude></div>
 <svg
-   width="770"
-   height="680"
+   viewbox="0 0 770 680"
    id="baseball-diamond-svg">
   <g
      transform="translate(6276.625,-304.21875)"
@@ -120,4 +120,3 @@
 
   </g>
 </svg>
-<div class="field-overlay" ng-transclude></div>

@@ -10,33 +10,34 @@
   <body>
 
     <div id="game" ng-controller="GameCtrl as game">
-      <div class="home-team" team home-team="game.homeTeam"></div>
-      <div class="away-team" team away-team="game.awayTeam"></div>
-
       <div scoreboard innings="game.innings" current-inning="game.inning" top-inning="game.isInningTop" away-team="game.awayTeam" home-team="game.homeTeam"></div>
-      <div baseball-diamond>
-        <ul id="batter-positive" class="play-action-buttons">
-          <li ng-show="game.outs < 3" ng-repeat="action in game.positiveBatterActions | possiblePlayAction">
-            <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
-          </li>
-        </ul>
-        <ul id="pitcher-positive" class="play-action-buttons">
-          <li ng-show="game.outs < 3" ng-repeat="action in game.negativeBatterActions | possiblePlayAction">
-            <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
-          </li>
-        </ul>
-        <ul id="during-atbat" class="play-action-buttons">
-          <li ng-show="game.outs < 3" ng-repeat="action in game.duringAtBatActions | possiblePlayAction">
-            <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
-          </li>
-        </ul>
-        <div id="outs-runners">
-          <div><span class="state-label">1st</span> {{ game.base(1).player.name }}</div>
-          <div><span class="state-label">2nd</span> {{ game.base(2).player.name }}</div>
-          <div><span class="state-label">3rd</span> {{ game.base(3).player.name }}</div>
-          <div><span class="state-label">Outs:</span> {{ game.outs }}</div>
+      <div class="diamond-container">
+        <div class="home-team" team home-team="game.homeTeam"></div>
+        <div class="away-team" team away-team="game.awayTeam"></div>
+        <div baseball-diamond>
+          <ul id="batter-positive" class="play-action-buttons">
+            <li ng-show="game.outs < 3" ng-repeat="action in game.positiveBatterActions | possiblePlayAction">
+              <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
+            </li>
+          </ul>
+          <ul id="pitcher-positive" class="play-action-buttons">
+            <li ng-show="game.outs < 3" ng-repeat="action in game.negativeBatterActions | possiblePlayAction">
+              <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
+            </li>
+          </ul>
+          <ul id="during-atbat" class="play-action-buttons">
+            <li ng-show="game.outs < 3" ng-repeat="action in game.duringAtBatActions | possiblePlayAction">
+              <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
+            </li>
+          </ul>
+          <div id="outs-runners">
+            <div><span class="state-label">1st</span> {{ game.base(1).player.name }}</div>
+            <div><span class="state-label">2nd</span> {{ game.base(2).player.name }}</div>
+            <div><span class="state-label">3rd</span> {{ game.base(3).player.name }}</div>
+            <div><span class="state-label">Outs:</span> {{ game.outs }}</div>
+          </div>
+          <button id="next-inning" ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
         </div>
-        <button id="next-inning" ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
       </div>
 
       <ul class="play-action-buttons">

@@ -25,11 +25,21 @@ div[at-bat] {
   width: 250px;
 }
 
+div.diamond-container {
+  min-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div[baseball-diamond] {
-  width: 771px;
+  width: 45%;
   margin-left: auto;
   margin-right: auto;
   position: relative;
+}
+
+div[baseball-diamond] svg {
+  padding-bottom: 10%;
 }
 
 div[baseball-diamond] .field-overlay {
@@ -64,6 +74,7 @@ div[baseball-diamond] #outs-runners {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: -1;
 }
 
 div[baseball-diamond] #outs-runners .state-label {
@@ -113,6 +124,7 @@ div[scoreboard] table {
 div[scoreboard] td, div[scoreboard] th {
   margin: 0;
   min-width: 1em;
+  height: 20px;
   padding: .25em .5em;
   text-align: center;
 }
@@ -126,8 +138,14 @@ div[scoreboard] td.current-inning {
   background-color: #eee;
 }
 
-div[team].home-team { float: left; }
-div[team].away-team { float: right; }
+div[team].home-team {
+  padding-left: 15%;
+  float: left;
+}
+div[team].away-team {
+  padding-right: 15%;
+  float: right;
+}
 
 div[team] li.batting {
   font-weight: bold;
@@ -182,4 +200,35 @@ div[team] .active img, div[team] .active {
   width: 50%;
   height: 50%;
   z-index: 100;
+}
+
+@media screen and (max-width: 1280px) {
+  div[team].home-team, div[team].away-team {
+    padding: 0;
+  }
+  div[baseball-diamond] {
+    width: 55%;
+  }
+  div[scoreboard] td, div[scoreboard] th {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div[team].home-team, div[team].away-team {
+    display: none;
+  }
+
+  div.diamond-container {
+    min-width: 480px;
+  }
+
+  div[baseball-diamond] {
+    width: 70%;
+  }
+
+  div[scoreboard] td, div[scoreboard] th {
+    padding: 0;
+    min-width: .25em;
+  }
 }
