@@ -1,6 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
 html, body {
   margin: 0;
-  font-family: arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 #game {
