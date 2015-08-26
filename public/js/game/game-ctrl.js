@@ -3,6 +3,15 @@ angular.module('game')
   var vm = this
 
   vm.playActions = playActions // Play Action Descriptors...need better name?
+  vm.positiveBatterActions = getPlayActions(['BB', '1B', '2B', '3B', 'HR'])
+  vm.negativeBatterActions = getPlayActions(['K', 'F', 'FC', 'DP'])
+  vm.duringAtBatActions = getPlayActions(['SB', 'CS', 'WP', 'B', 'PB', 'E'])
+
+  function getPlayActions(abbrevList) {
+    return _.map(abbrevList, function(abbrev) {
+      return _.findWhere(playActions, { abbrev: abbrev })
+    })
+  }
 
   vm.base = function(base) {
     var runner = _.findWhere(GameState.runners(), { base: base })
