@@ -39,8 +39,6 @@
         <button id="next-inning" ng-show="game.outs >= 3" ng-click="game.nextInning()">Next Inning</button>
       </div>
 
-      <div>Pitcher: {{ game.pitcher.name }}</div>
-
       <ul class="play-action-buttons">
         <li ng-show="game.outs < 3" ng-repeat="action in game.playActions | possiblePlayAction">
           <button ng-click="game.createPlayAction(action)">{{action.abbrev}}</button>
