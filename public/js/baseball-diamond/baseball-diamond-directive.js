@@ -3,6 +3,7 @@ angular.module('baseball-diamond')
   return {
     allow: 'AE',
     scope: {},
+    transclude: true,
     templateUrl: TemplateUtil.url('baseball-diamond/baseball-diamond.tmpl.svg'),
     controller: function($scope) {
 

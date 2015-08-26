@@ -120,3 +120,4 @@
 
   </g>
 </svg>
+<div class="field-overlay" ng-transclude></div>

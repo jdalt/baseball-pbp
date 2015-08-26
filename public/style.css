@@ -7,12 +7,12 @@ h4 {
   margin: 0
 }
 
-ul#play-action-buttons {
+ul.play-action-buttons {
   margin: 0;
   padding: 0;
 }
 
-ul#play-action-buttons li {
+ul.play-action-buttons li {
   display: inline-block;
   padding-right: .25em;
 }
@@ -29,6 +29,46 @@ div[baseball-diamond] {
   width: 771px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+}
+
+div[baseball-diamond] .field-overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+}
+
+div[baseball-diamond] .play-action-buttons li {
+  display: block;
+}
+
+div[baseball-diamond] .play-action-buttons button {
+  font-size: 20px;
+  margin: 1px;
+  margin: 3px;
+  width: 75px;
+  border: 1px solid black;
+  background-color: #eee;
+}
+
+div[baseball-diamond] #batter-positive { float: right; }
+div[baseball-diamond] #pitcher-positive { float: left; }
+div[baseball-diamond] #during-atbat {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+div[baseball-diamond] #during-atbat li {
+  display: inline-block;
+}
+
+div[baseball-diamond] #next-inning {
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+  font-size: 30px;
 }
 
 div[baseball-diamond] .base {
